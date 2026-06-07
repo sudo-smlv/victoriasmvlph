@@ -61,7 +61,8 @@
 				"60+ Fotos in eigener Bearbeitung",
 				"Online-Galerie in 10—14 Tagen"
 			],
-			"delivery": "Fertig in 10—14 Tagen"
+			"delivery": "Fertig in 10—14 Tagen",
+			"featured": "Am beliebtesten"
 		},
 		"atmosphere": {
 			"name": "Atmosphäre",

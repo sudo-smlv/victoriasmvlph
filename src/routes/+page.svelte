@@ -72,11 +72,6 @@
 		{ key: 'schluchsee', label: 'Schluchsee' }
 	];
 
-	// TODO(i18n): the Badge on the recommended package uses a static English
-	// label. Wire to a real catalog key (e.g. `packages.moment.featured`)
-	// during the CLA-5 integration pass.
-	const RECOMMENDED_BADGE = 'Most popular';
-
 	const INSTAGRAM_URL = 'https://instagram.com/victoriasmvlph';
 	const TELEGRAM_URL = 'https://t.me/victoriasmvlph';
 
@@ -86,9 +81,9 @@
 	}
 </script>
 
-<!-- TODO(i18n): the page consumes the i18n catalog authored by CLA-3
-     (commit 4155b79 on feat/cla-3-i18n-catalog). CLA-5 may polish layout
-     and wire any new keys (e.g. a `packages.moment.featured` badge label). -->
+<!-- The page consumes the i18n catalog authored by CLA-3 (commit 4155b79 on
+     feat/cla-3-i18n-catalog). The recommended-package badge label is wired
+     to `packages.moment.featured`, which is defined in all three locales. -->
 
 <section class="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-12 sm:px-6 sm:py-16 lg:py-24">
 	<div class="flex flex-col items-start gap-6">
@@ -199,7 +194,7 @@
 
 		<Card.Root class="ring-ring relative flex h-full flex-col ring-2">
 			<Badge class="absolute -top-3 left-6 shadow-sm">
-				{RECOMMENDED_BADGE}
+				{$_('packages.moment.featured')}
 			</Badge>
 			<Card.Header>
 				<Card.Title class="text-2xl">
