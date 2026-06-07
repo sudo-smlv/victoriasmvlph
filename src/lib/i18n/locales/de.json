@@ -1,12 +1,89 @@
 {
 	"common": {
 		"appName": "Viktoria",
+		"brand": "Viktoria",
 		"tagline": "Fotografin & visuelle Geschichtenerzählerin",
 		"language": "Sprache",
 		"selectLanguage": "Sprache auswählen",
 		"currentLanguage": "Deutsch",
+		"nav": {
+			"about": "Über mich",
+			"services": "Leistungen",
+			"books": "Fotobücher",
+			"contact": "Kontakt"
+		},
+		"lang": {
+			"ru": "Русский",
+			"en": "English",
+			"de": "Deutsch"
+		},
+		"footer": {
+			"copyright": "© 2026 Viktoria. Alle Rechte vorbehalten."
+		},
 		"placeholderHeading": "Hallo, Welt!",
 		"placeholderBody": "Dies ist eine Scaffold-Seite. Die echten Inhalte folgen in der nächsten Aufgabe.",
 		"placeholderCta": "Mehr erfahren"
+	},
+	"hero": {
+		"headline": "Geschichten, die bleiben",
+		"subheadline": "Lifestyle-Fotografie, atmosphärische Reels und hochwertige Fotobücher in Freiburg, Basel, Baden-Baden und überall in Europa.",
+		"cta_primary": "Termin buchen"
+	},
+	"about": {
+		"title": "Über mich",
+		"body": "Ich bewahre Ihre Gefühle sorgsam in Bildern und Büchern. Mein Name ist Viktoria, und ich erzähle visuelle Geschichten: lebendige Fotografie, atmosphärische Reels und hochwertige Fotobücher. Ich fotografiere in Freiburg, Basel, Baden-Baden und in ganz Europa.\n\nFür mich ist Fotografie mehr als ein hübsches Bild — sie ist die Möglichkeit, die Zeit anzuhalten und Ihre ehrlichsten Emotionen festzuhalten. Ich glaube, jede Geschichte ist einzigartig, deshalb biete ich ein Komplettpaket an: Ich helfe Ihnen, die perfekte Location zu finden, schaffe eine entspannte Atmosphäre beim Shooting, drehe ästhetische Kurzvideos für Ihren Instagram-Auftritt und gestalte die stärksten Aufnahmen in einem gedruckten Album, das man immer wieder gern in die Hand nimmt.\n\nWir wählen gemeinsam eine Location, die zu Ihrer Stimmung passt. Das kann die städtische Ästhetik und Architektur von Freiburg, Basel oder Baden-Baden sein — ideal für stilvolle Spaziergänge, Kaffee auf Terrassen und elegante Aufnahmen. Oder die cineastische Natur des Schwarzwalds: der Titisee und der Schluchsee mit ihrem stillen Wasser, den Nadelwäldern und dem weichen Licht für die romantischsten Geschichten.",
+		"locations": {
+			"title": "Wo ich fotografiere"
+		}
+	},
+	"services": {
+		"title": "Leistungen",
+		"subtitle": "Für Ihre Bequemlichkeit gibt es mehrere Shooting-Formate."
+	},
+	"packages": {
+		"mini": {
+			"name": "Mini",
+			"price": "100\u00a0€",
+			"bullets": [
+				"Beratung und Hilfe bei Location und Outfit",
+				"30 Minuten Shooting",
+				"30 Fotos in eigener Farbkorrektur und leichter Retusche",
+				"Fertige Online-Galerie in 7 Tagen"
+			],
+			"delivery": "Fertig in 7 Tagen"
+		},
+		"moment": {
+			"name": "Moment",
+			"price": "200\u00a0€",
+			"bullets": [
+				"Beratung",
+				"1 Stunde Shooting",
+				"60+ Fotos in eigener Bearbeitung",
+				"Online-Galerie in 10—14 Tagen"
+			],
+			"delivery": "Fertig in 10—14 Tagen"
+		},
+		"atmosphere": {
+			"name": "Atmosphäre",
+			"price": "250\u00a0€",
+			"bullets": [
+				"Hilfe bei der Vorbereitung",
+				"1,5 Stunden Shooting",
+				"90+ Fotos in eigener Bearbeitung",
+				"Fertiger Reels-Schnitt mit Musik, 15—30 Sekunden",
+				"Bearbeitungszeit — 14 Tage"
+			],
+			"delivery": "Fertig in 14 Tagen"
+		}
+	},
+	"books": {
+		"title": "Fotobücher",
+		"body": "Ich bin fest davon überzeugt, dass Fotos nicht nur auf dem Telefon existieren sollten — deshalb gestalte ich hochwertige Fotobücher, die zu echten Familienerbstücken werden. Sie können ein Buch zu jedem unserer Shootings bestellen oder darin Ihre eigenen Archivaufnahmen verewigen. Ich übernehme vollständig das Design und den Satz, und wir besprechen jedes Detail, um das Album bis zur Perfektion zu bringen.\n\nDiese Bücher zeichnen sich durch besondere Qualität aus: Der Lay-Flat-Einband lässt sich flach auf 180° öffnen, es wird seidenmattes oder glänzendes Papier verwendet, und die Cover werden aus Premium-Stoff, Eco-Leder oder Soft-Touch-Beschichtung mit optionaler persönlicher Prägung gefertigt. Gestaltung und Druck werden individuell für Ihre Anfrage kalkuliert, und das fertige Produkt wird in ganz Europa ausgeliefert."
+	},
+	"contact": {
+		"title": "Kontakt aufnehmen",
+		"body": "Lassen Sie uns gemeinsam etwas Schönes schaffen! Um einen Termin zu buchen, erzählen Sie mir kurz von Ihrer Idee: Welche Art von Shooting Sie sich wünschen und in welcher Stadt Sie sind. Sie können mir direkt schreiben, und ich melde mich innerhalb eines Tages bei Ihnen.",
+		"instagram_label": "Nachricht auf Instagram",
+		"telegram_label": "Nachricht auf Telegram"
 	}
 }
