@@ -4,8 +4,8 @@ Single-page, modern, responsive landing page for photographer Viktoria. Built wi
 SvelteKit + Tailwind CSS + `shadcn-svelte` components and `svelte-i18n` for
 RU / EN / DE localization. Static-only build (no backend, no server runtime).
 
-This repository currently ships the **scaffold** (CLA-2). Page content
-(about, services, photo books, contact) is delivered by follow-up tasks.
+The site is fully built: all five sections (hero, about, services, photo books,
+contact) are rendered from i18n catalogs in RU, EN, and DE.
 
 ## Tech stack
 
@@ -100,6 +100,46 @@ The build is fully static — open `./build/index.html` or serve the
 `build/` directory with any static host (GitHub Pages, Netlify, S3 + CDN,
 etc.). The static adapter ships an `index.html` fallback so client-side
 routing works on hosts that don't rewrite unknown paths.
+
+## Deploy
+
+The site is configured for **Netlify**. A single `netlify.toml` at the
+repo root handles everything: build command, publish directory, SPA
+routing (all paths rewritten to `index.html`), and security headers
+(`X-Content-Type-Options`, `Referrer-Policy`).
+
+### One-time setup
+
+1. Push the repo to GitHub.
+2. In the Netlify dashboard, create a new site from Git and select the
+   repository. Netlify auto-detects `netlify.toml` — no manual config
+   needed.
+3. Netlify will also auto-deploy the default branch. To deploy
+   manually: `npm ci && npm run build` and drag the `build/` folder
+   onto the Netlify Deploys tab, or use the CLI:
+   ```bash
+   npx netlify-cli deploy --prod --dir=build
+   ```
+
+### CI
+
+A minimal GitHub Actions workflow (`.github/workflows/build.yml`) runs
+`npm ci` → `npm run build` on every push and PR to
+`feat/cla-5-integration` and uploads the `build/` directory as an
+artifact. Netlify handles its own deploys when linked to the repo, so
+the CI workflow is purely for build verification and artifact storage.
+
+### Hosting elsewhere
+
+The site is fully static — a single `build/` directory of HTML, JS,
+CSS, and assets. To host it on any other platform, configure the
+platform to:
+
+- serve `build/` (or `build/index.html` for all unknown paths)
+- set `Cache-Control: public, max-age=31536000, immutable` for
+  `build/_app/immutable/*` (content-hashed assets)
+- add `X-Content-Type-Options: nosniff` and
+  `Referrer-Policy: strict-origin-when-cross-origin` headers
 
 ## Project layout
 

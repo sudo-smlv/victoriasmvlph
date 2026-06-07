@@ -1,0 +1,22 @@
+# Netlify deploy configuration for Viktoria landing page
+# https://docs.netlify.com/configure-builds/file-based-configuration/
+
+[build]
+  command = "npm ci && npm run build"
+  publish = "build"
+
+[[redirects]]
+  from = "/_app/*"
+  to = "/_app/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
