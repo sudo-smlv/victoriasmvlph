@@ -1,0 +1,12 @@
+{
+	"common": {
+		"appName": "Viktoria",
+		"tagline": "Фотограф и создатель визуальных историй",
+		"language": "Язык",
+		"selectLanguage": "Выбрать язык",
+		"currentLanguage": "Русский",
+		"placeholderHeading": "Привет, мир!",
+		"placeholderBody": "Это страница-каркас. Реальный контент появится в следующей задаче.",
+		"placeholderCta": "Подробнее"
+	}
+}

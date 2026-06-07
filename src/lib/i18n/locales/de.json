@@ -1,0 +1,12 @@
+{
+	"common": {
+		"appName": "Viktoria",
+		"tagline": "Fotografin & visuelle Geschichtenerzählerin",
+		"language": "Sprache",
+		"selectLanguage": "Sprache auswählen",
+		"currentLanguage": "Deutsch",
+		"placeholderHeading": "Hallo, Welt!",
+		"placeholderBody": "Dies ist eine Scaffold-Seite. Die echten Inhalte folgen in der nächsten Aufgabe.",
+		"placeholderCta": "Mehr erfahren"
+	}
+}

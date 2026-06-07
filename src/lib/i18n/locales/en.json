@@ -1,0 +1,12 @@
+{
+	"common": {
+		"appName": "Viktoria",
+		"tagline": "Photographer & Visual Storyteller",
+		"language": "Language",
+		"selectLanguage": "Select language",
+		"currentLanguage": "English",
+		"placeholderHeading": "Hello, world!",
+		"placeholderBody": "This is a scaffold page. Real content lands in the next issue.",
+		"placeholderCta": "Learn more"
+	}
+}
