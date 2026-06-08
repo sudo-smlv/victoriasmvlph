@@ -2,9 +2,9 @@ name: Build and deploy to GitHub Pages
 
 on:
   push:
-    branches: [main, feat/cla-5-integration]
+    branches: [main, feat/cla-5-integration, 'fix/**']
   pull_request:
-    branches: [main, feat/cla-5-integration]
+    branches: [main, feat/cla-5-integration, 'fix/**']
   workflow_dispatch:
 
 permissions:
