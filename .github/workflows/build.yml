@@ -37,7 +37,7 @@ jobs:
       - name: Build static site
         env:
           BASE_PATH: ${{ steps.basepath.outputs.value }}
-        run: npm ci && npm run build
+        run: npm install --no-audit --no-fund && npm run build
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
