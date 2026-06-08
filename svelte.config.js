@@ -11,7 +11,17 @@ const config = {
 			assets: 'build',
 			precompress: false,
 			strict: true
-		})
+		}),
+		paths: {
+			base: process.env.BASE_PATH || '',
+			relative: false
+		},
+		prerender: {
+			handleHttpError: ({ path, message }) => {
+				if (path === '/' || path.startsWith('/victoriasmvlph')) return;
+				throw new Error(message);
+			}
+		}
 	}
 };
 

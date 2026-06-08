@@ -1,13 +1,24 @@
-name: Build
+name: Build and deploy to GitHub Pages
 
 on:
   push:
-    branches: [feat/cla-5-integration]
+    branches: [main, feat/cla-5-integration]
   pull_request:
-    branches: [feat/cla-5-integration]
+    branches: [main, feat/cla-5-integration]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
 
 jobs:
   build:
+    name: Build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -15,9 +26,30 @@ jobs:
         with:
           node-version: 20
           cache: npm
-      - run: npm ci
-      - run: npm run build
-      - uses: actions/upload-artifact@v4
+      - name: Determine base path
+        id: basepath
+        run: |
+          if [ -n "${{ vars.PAGES_BASE_PATH }}" ]; then
+            echo "value=${{ vars.PAGES_BASE_PATH }}" >> "$GITHUB_OUTPUT"
+          else
+            echo "value=/${{ github.event.repository.name }}" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Build static site
+        env:
+          BASE_PATH: ${{ steps.basepath.outputs.value }}
+        run: npm ci && npm run build
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
         with:
-          name: viktoria-landing-build
           path: build/
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
