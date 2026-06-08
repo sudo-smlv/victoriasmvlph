@@ -4,7 +4,16 @@
 	import * as Card from '$lib/components/ui/card';
 	import { Badge } from '$lib/components/ui/badge';
 	import { Separator } from '$lib/components/ui/separator';
-	import { Camera, Send, MapPin, Calendar, Clock, Sparkles, Check, BookOpen } from '@lucide/svelte';
+	import {
+		Camera,
+		Send,
+		MapPin,
+		Clock,
+		Sparkles,
+		Check,
+		BookOpen,
+		ArrowRight
+	} from '@lucide/svelte';
 
 	type Bullet = string;
 
@@ -85,40 +94,128 @@
      feat/cla-3-i18n-catalog). The recommended-package badge label is wired
      to `packages.moment.featured`, which is defined in all three locales. -->
 
-<section class="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-12 sm:px-6 sm:py-16 lg:py-24">
-	<div class="flex flex-col items-start gap-6">
+<!-- Editorial Hero.
+     Design only — every i18n key, component, and text string is the same
+     as the previous version. Layout is a two-column asymmetric grid on
+     desktop (text + polaroid image) and stacked on mobile. The
+     photographer can drop real <img> tags into the Card placeholders
+     later, keeping the surrounding aspect ratio and the rotation. -->
+<section class="mx-auto max-w-6xl px-4 pt-10 pb-12 sm:px-6 sm:pt-14 lg:pt-16 lg:pb-20">
+	<!-- Top meta row: tagline + "01" indicator + decorative quote -->
+	<div class="mb-8 flex flex-wrap items-center justify-between gap-3 sm:mb-10">
 		<Badge variant="secondary" class="gap-1.5">
 			<Sparkles class="size-3" />
 			{$_('common.tagline')}
 		</Badge>
-		<h1 class="text-4xl leading-tight font-semibold tracking-tight sm:text-5xl lg:text-6xl">
-			{$_('hero.headline')}
-		</h1>
-		<p class="text-muted-foreground max-w-2xl text-base sm:text-lg">
-			{$_('hero.subheadline')}
-		</p>
-		<div class="flex flex-wrap items-center gap-3">
-			<Button size="lg" onclick={scrollToContact}>
-				<Calendar class="size-4" />
-				{$_('hero.cta_primary')}
-			</Button>
+		<div class="text-muted-foreground flex items-center gap-2 text-xs tracking-[0.3em] uppercase">
+			<span>01 / Hero</span>
 		</div>
 	</div>
 
-	<!-- Hero image placeholder.
-	     The repo does not ship real photographs. The photographer can swap
-	     this Card for a real <img> (e.g. an Unsplash URL with
-	     ?auto=format&fit=crop&w=...) while keeping the surrounding aspect
-	     ratio. -->
-	<Card.Root class="bg-muted/40 overflow-hidden border-dashed p-0">
-		<div
-			class="bg-muted/60 text-muted-foreground flex aspect-[16/9] w-full items-center justify-center gap-3 sm:aspect-[21/9]"
-			aria-hidden="true"
-		>
-			<Camera class="size-8 sm:size-10" />
-			<span class="text-sm font-medium sm:text-base">{$_('common.tagline')}</span>
+	<div class="grid gap-12 lg:grid-cols-12 lg:gap-10">
+		<!-- Left column: typography + CTA -->
+		<div class="flex flex-col gap-6 lg:col-span-7 lg:gap-7">
+			<!-- Editorial kicker -->
+			<div class="flex items-center gap-2 text-yellow-600 dark:text-yellow-400">
+				<Sparkles class="size-4" />
+				<span class="text-xs font-semibold tracking-[0.25em] uppercase">
+					{$_('common.tagline')}
+				</span>
+			</div>
+
+			<!-- Big display headline -->
+			<h1
+				class="text-foreground text-5xl leading-[0.92] font-black tracking-[-0.04em] sm:text-6xl lg:text-7xl xl:text-[5.5rem]"
+			>
+				{$_('hero.headline')}
+			</h1>
+
+			<!-- Subheadline with editorial indent -->
+			<p
+				class="text-muted-foreground max-w-xl text-base leading-relaxed sm:text-lg lg:text-xl"
+			>
+				{$_('hero.subheadline')}
+			</p>
+
+			<!-- CTA row + secondary "Read my story" link styled like the reference -->
+			<div class="flex flex-wrap items-center gap-4 pt-2">
+				<Button
+					size="lg"
+					onclick={scrollToContact}
+					class="bg-yellow-300 text-black hover:bg-yellow-400 border-0 shadow-sm"
+				>
+					{$_('hero.cta_primary')}
+					<ArrowRight class="size-4" />
+				</Button>
+				<a
+					href="#about"
+					class="text-foreground text-sm font-semibold tracking-[0.2em] uppercase underline decoration-2 underline-offset-4 hover:decoration-yellow-400"
+				>
+					{$_('common.nav.about')}
+				</a>
+			</div>
+
+			<!-- Page indicator dots -->
+			<div
+				class="mt-2 flex items-center gap-1.5"
+				aria-label="Hero pagination indicator"
+			>
+				<span class="bg-foreground size-2.5 rounded-full" aria-hidden="true"></span>
+				<span
+					class="bg-foreground/30 size-2.5 rounded-full"
+					aria-hidden="true"
+				></span>
+				<span
+					class="bg-foreground/30 size-2.5 rounded-full"
+					aria-hidden="true"
+				></span>
+				<span
+					class="bg-foreground/30 size-2.5 rounded-full"
+					aria-hidden="true"
+				></span>
+			</div>
 		</div>
-	</Card.Root>
+
+		<!-- Right column: polaroid-style hero image + caption -->
+		<div class="relative flex items-start justify-center lg:col-span-5 lg:justify-end">
+			<!-- Decorative quote mark in the background -->
+			<span
+				class="text-foreground/10 absolute -top-6 -left-2 select-none text-[8rem] leading-none font-black sm:text-[10rem] lg:text-[12rem]"
+				aria-hidden="true"
+			>
+				&rdquo;
+			</span>
+
+			<!-- Polaroid-style image card with rotation -->
+			<Card.Root
+				class="bg-muted/40 relative w-full max-w-md -rotate-2 overflow-hidden rounded-md border-2 p-3 shadow-lg sm:max-w-lg lg:max-w-none"
+			>
+				<div
+					class="bg-muted/60 text-muted-foreground flex aspect-[4/5] w-full items-center justify-center gap-3"
+					aria-hidden="true"
+				>
+					<Camera class="size-10 sm:size-12" />
+				</div>
+				<!-- Polaroid caption row -->
+				<div class="mt-3 flex items-center justify-between gap-2">
+					<span class="text-muted-foreground text-xs tracking-[0.2em] uppercase">
+						01
+					</span>
+					<span class="text-muted-foreground text-xs italic">
+						{$_('common.tagline')}
+					</span>
+				</div>
+			</Card.Root>
+
+			<!-- Decorative "→" arrow on the right of the polaroid -->
+			<span
+				class="text-foreground/40 absolute right-0 bottom-4 select-none text-3xl"
+				aria-hidden="true"
+			>
+				→
+			</span>
+		</div>
+	</div>
 </section>
 
 <Separator />
