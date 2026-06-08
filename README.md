@@ -164,11 +164,6 @@ src/
     +page.svelte                # scaffold placeholder
 ```
 
-## Warm-up
-
-Last warmed up: 2026-06-08 (no-op doc-only commit to re-prime the contribution
-flow; see `CHANGELOG.md`).
-
 ## Acceptance checklist (CLA-2)
 
 - [x] `npm install` succeeds.
