@@ -103,36 +103,85 @@ routing works on hosts that don't rewrite unknown paths.
 
 ## Deploy
 
-The site is configured for **Netlify**. A single `netlify.toml` at the
-repo root handles everything: build command, publish directory, SPA
-routing (all paths rewritten to `index.html`), and security headers
-(`X-Content-Type-Options`, `Referrer-Policy`).
+The site is deployed to **GitHub Pages** straight from the repo. A
+single GitHub Actions workflow (`.github/workflows/build.yml`) builds
+the static site on every push and PR, then pushes the `build/`
+directory to a `gh-pages` branch via
+[`peaceiris/actions-gh-pages@v4`](https://github.com/peaceiris/actions-gh-pages).
+GitHub Pages serves that branch as the live site.
 
-### One-time setup
+### One-time setup (the only manual step)
 
-1. Push the repo to GitHub.
-2. In the Netlify dashboard, create a new site from Git and select the
-   repository. Netlify auto-detects `netlify.toml` — no manual config
-   needed.
-3. Netlify will also auto-deploy the default branch. To deploy
-   manually: `npm ci && npm run build` and drag the `build/` folder
-   onto the Netlify Deploys tab, or use the CLI:
-   ```bash
-   npx netlify-cli deploy --prod --dir=build
-   ```
+The workflow itself is fully code-defined. There is exactly one
+manual step the human repo admin must perform in the GitHub UI after
+this PR merges — the `Settings → Pages` source has to point at the
+`gh-pages` branch the workflow creates:
+
+1. Push the repo to GitHub (already done).
+2. After the first successful workflow run publishes a `gh-pages`
+   branch, open `Settings → Pages` in the GitHub UI.
+3. Under **Source**, choose **Deploy from a branch**.
+4. Set **Branch** to `gh-pages` and **Folder** to `/ (root)`. Save.
+
+No GitHub environment, no OIDC trust, no extra secrets, no extra
+PATs. The workflow uses the default `GITHUB_TOKEN`, which is
+provisioned automatically for every run.
 
 ### CI
 
-A minimal GitHub Actions workflow (`.github/workflows/build.yml`) runs
-`npm ci` → `npm run build` on every push and PR to
-`feat/cla-5-integration` and uploads the `build/` directory as an
-artifact. Netlify handles its own deploys when linked to the repo, so
-the CI workflow is purely for build verification and artifact storage.
+The workflow (`.github/workflows/build.yml`):
+
+- Triggers on `push` and `pull_request` to `main` and
+  `feat/cla-5-integration` (plus PRs from `fix/**` for build
+  verification only).
+- Runs `scripts/lint-actions.sh` as the first step — see
+  [Action-major lint](#action-major-lint) below.
+- Builds the site with `npm install --no-audit --no-fund` → `npm run build`
+  and emits a static `build/` directory.
+- On every `push` to `main` or `feat/cla-5-integration`, the final
+  step uses `peaceiris/actions-gh-pages@v4` to push `build/` to the
+  `gh-pages` branch. PRs build-verify only — the deploy step is
+  gated on `github.event_name == 'push'`, so PRs never publish.
+- Uses the runner's built-in `GITHUB_TOKEN`; no extra repo secrets
+  are required.
+
+#### Action-major lint
+
+The workflow also runs `scripts/lint-actions.sh` as its first step. The
+script greps `.github/workflows/*.yml` for `actions/<name>@vN` references
+and fails the build if any is pinned below the Node-24-ready major floor.
+This is the regression guard for the [CLAAAAA-63] bump: if a future
+contributor re-pins `actions/checkout@v4` (or any other pre-Node-24
+major), CI fails loudly with a `::error file=...,line=...::` annotation
+that names the offending reference.
+
+Reference minima:
+
+| Action                       | Floor   |
+|------------------------------|---------|
+| `actions/checkout`           | `@v5+`  |
+| `actions/setup-node`         | `@v5+`  |
+
+Note: `peaceiris/actions-gh-pages@v4` is a third-party action and is
+intentionally not floored by the lint script — the Node-24 runtime is
+enforced at the workflow level via
+`FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'`, and the action is pinned
+to a major (`@v4`), not a floating tag.
+
+Run the lint locally with:
+
+```bash
+npm run lint:actions
+```
+
+To intentionally pin a pre-floor reference (for documentation snippets,
+etc.), append the inline marker `node-24-lint: disable` to the same line.
 
 ### Hosting elsewhere
 
 The site is fully static — a single `build/` directory of HTML, JS,
-CSS, and assets. To host it on any other platform, configure the
+CSS, and assets. To host it on any other platform (S3 + CloudFront,
+Netlify, Vercel static, Cloudflare Pages, etc.), configure the
 platform to:
 
 - serve `build/` (or `build/index.html` for all unknown paths)
@@ -140,6 +189,11 @@ platform to:
   `build/_app/immutable/*` (content-hashed assets)
 - add `X-Content-Type-Options: nosniff` and
   `Referrer-Policy: strict-origin-when-cross-origin` headers
+
+Netlify is no longer the primary deploy target. A manual `netlify
+deploy` (with `publish = "build"`) still works as a one-off
+fallback, but `netlify.toml` is intentionally not checked in — push
+the `build/` directory from any host you prefer.
 
 ## Project layout
 
