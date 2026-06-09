@@ -7,6 +7,11 @@ on:
     branches: [main, feat/cla-5-integration, 'fix/**']
   workflow_dispatch:
 
+# Workflow-level env: force every JS action to Node 24 even if a pinned
+# major still defaults to Node 20. Keep this as a rollback safety net.
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
+
 permissions:
   contents: read
   pages: write
@@ -28,11 +33,16 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
         with:
-          node-version: 20
+          node-version: 24
           cache: npm
+      - name: Show runtime versions
+        run: |
+          echo "Runner OS: ${{ runner.os }}"
+          node -v
+          npm -v
       - name: Determine base path
         id: basepath
         run: |
@@ -45,8 +55,8 @@ jobs:
         env:
           BASE_PATH: ${{ steps.basepath.outputs.value }}
         run: npm install --no-audit --no-fund && npm run build
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/configure-pages@v6
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: build/
 
@@ -60,4 +70,4 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
