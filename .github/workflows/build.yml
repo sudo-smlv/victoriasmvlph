@@ -13,7 +13,7 @@ env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
   group: pages
@@ -53,8 +53,6 @@ jobs:
         run: npm install --no-audit --no-fund && npm run build
       - name: Deploy to gh-pages branch
         if: github.event_name == 'push'
-        permissions:
-          contents: write
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
