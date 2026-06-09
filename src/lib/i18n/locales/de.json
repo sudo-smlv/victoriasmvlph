@@ -27,7 +27,21 @@
 	"hero": {
 		"headline": "Geschichten, die bleiben",
 		"subheadline": "Lifestyle-Fotografie, atmosphärische Reels und hochwertige Fotobücher in Freiburg, Basel, Baden-Baden und überall in Europa.",
-		"cta_primary": "Termin buchen"
+		"cta_primary": "Termin buchen",
+		"slides": [
+			{ "alt": "Lifestyle-Portrait im goldenen Licht", "caption": "Goldene Stunde, Freiburg" },
+			{ "alt": "Paar zwischen Schwarzwälder Tannen", "caption": "Schwarzwald" },
+			{ "alt": "Reels-Frame auf einer Baseler Terrasse", "caption": "Baseler Terrasse" },
+			{ "alt": "Aufschlag eines Premium-Fotobuchs", "caption": "Fotobuch Nr. 01" }
+		],
+		"controls": {
+			"prev": "Vorheriges Bild",
+			"next": "Nächstes Bild",
+			"play": "Diashow starten",
+			"pause": "Diashow anhalten",
+			"slide_label": "Zu Bild {index} von {total} springen",
+			"slide_status": "Bild {index} von {total}: {caption}"
+		}
 	},
 	"about": {
 		"title": "Über mich",
