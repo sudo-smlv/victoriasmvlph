@@ -30,9 +30,9 @@
 	--ring: oklch(0.708 0 0);
 	--radius: 0rem;
 
-	/* Jasons-style editorial palette */
-	--brand-orange: oklch(0.71 0.18 50); /* ≈ #F26A21 */
-	--brand-yellow: oklch(0.86 0.18 95); /* ≈ #FFD24A */
+	/* Jasons-style editorial palette — luxe pastel tokens (CLAAAAA-46) */
+	--brand-orange: oklch(0.74 0.08 35); /* ≈ #C7A192 — muted terracotta / clay */
+	--brand-yellow: oklch(0.86 0.05 95); /* ≈ #E5DDC7 — champagne / butter */
 	--brand-ink: oklch(0.16 0.01 280); /* ≈ #0E0E0E */
 	--brand-cream: oklch(0.97 0.02 85); /* ≈ #FAF6EE */
 	--brand-charcoal: oklch(0.22 0.01 280); /* ≈ #1A1A1A */
