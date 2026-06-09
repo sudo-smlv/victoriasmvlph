@@ -12,6 +12,13 @@ permissions:
   pages: write
   id-token: write
 
+# Node.js 20 is deprecated on GitHub Actions runners; the runner will force
+# Node.js 24 by default on 2026-06-16 and remove Node.js 20 on 2026-09-16.
+# Opt the workflow into Node.js 24 now to silence the warning and keep the
+# Pages deploy green.
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
+
 concurrency:
   group: pages
   cancel-in-progress: false
@@ -46,6 +53,7 @@ jobs:
   deploy:
     name: Deploy to GitHub Pages
     needs: build
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/feat/cla-5-integration')
     runs-on: ubuntu-latest
     environment:
       name: github-pages
