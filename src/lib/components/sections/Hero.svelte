@@ -4,6 +4,12 @@
 	import { Button } from '$lib/components/ui/button';
 	import { Badge } from '$lib/components/ui/badge';
 	import { Camera, Sparkles, ArrowUpRight, ChevronLeft, ChevronRight } from '@lucide/svelte';
+	import {
+		SLIDE_DURATION_MS,
+		formatSlideLabel,
+		nextIndex,
+		previousIndex
+	} from '$lib/heroSlideshow';
 
 	type Slide = {
 		taglineKey: 'intro.tagline_lead' | 'duo.card1_tagline' | 'duo.card2_tagline';
@@ -17,19 +23,17 @@
 		{ taglineKey: 'duo.card2_tagline', swatchClass: 'bg-brand-ink', textClass: 'text-brand-cream' }
 	];
 
-	const SLIDE_DURATION_MS = 5000;
-
 	let currentSlide = $state(0);
 	let prefersReducedMotion = $state(false);
 	let liveAnnouncement = $state('');
 	let timer: ReturnType<typeof setInterval> | null = null;
 
 	function nextSlide() {
-		currentSlide = (currentSlide + 1) % SLIDES.length;
+		currentSlide = nextIndex(currentSlide, SLIDES.length);
 	}
 
 	function prevSlide() {
-		currentSlide = (currentSlide - 1 + SLIDES.length) % SLIDES.length;
+		currentSlide = previousIndex(currentSlide, SLIDES.length);
 	}
 
 	function goToSlide(index: number) {
@@ -40,10 +44,10 @@
 	function handleIndicatorKey(event: KeyboardEvent, index: number) {
 		if (event.key === 'ArrowRight') {
 			event.preventDefault();
-			goToSlide((index + 1) % SLIDES.length);
+			goToSlide(nextIndex(index, SLIDES.length));
 		} else if (event.key === 'ArrowLeft') {
 			event.preventDefault();
-			goToSlide((index - 1 + SLIDES.length) % SLIDES.length);
+			goToSlide(previousIndex(index, SLIDES.length));
 		} else if (event.key === 'Home') {
 			event.preventDefault();
 			goToSlide(0);
@@ -66,13 +70,9 @@
 		timer = setInterval(nextSlide, SLIDE_DURATION_MS);
 	}
 
-	function formatTemplate(template: string, current: number, total: number): string {
-		return template.replace('{current}', String(current)).replace('{total}', String(total));
-	}
-
 	$effect(() => {
 		const template = $_(`hero.slideshow_slide_label`) as string;
-		liveAnnouncement = formatTemplate(template, currentSlide + 1, SLIDES.length);
+		liveAnnouncement = formatSlideLabel(template, currentSlide + 1, SLIDES.length);
 	});
 
 	$effect(() => {
@@ -155,17 +155,17 @@
 				aria-label={$_('hero.slideshow_label')}
 				class="border-hairline bg-brand-cream relative aspect-[4/5] w-full overflow-hidden border"
 			>
-				{#each SLIDES as slide, i (slide.taglineKey)}
-					<div
-						class="absolute inset-0 flex items-center justify-center p-6 transition-opacity duration-700 ease-in-out sm:p-10"
-						class:opacity-100={i === currentSlide}
-						class:opacity-0={i !== currentSlide}
-						class:pointer-events-none={i !== currentSlide}
-						aria-hidden={i !== currentSlide}
-						role="group"
-						aria-roledescription="slide"
-						aria-label={formatTemplate($_('hero.slideshow_slide_label'), i + 1, SLIDES.length)}
-					>
+			{#each SLIDES as slide, i (slide.taglineKey)}
+				<div
+					class="absolute inset-0 flex items-center justify-center p-6 transition-opacity duration-700 ease-in-out sm:p-10"
+					class:opacity-100={i === currentSlide}
+					class:opacity-0={i !== currentSlide}
+					class:pointer-events-none={i !== currentSlide}
+					aria-hidden={i !== currentSlide}
+					role="group"
+					aria-roledescription="slide"
+					aria-label={formatSlideLabel($_('hero.slideshow_slide_label'), i + 1, SLIDES.length)}
+				>
 						<div
 							class="absolute inset-0 {slide.swatchClass}"
 							aria-hidden="true"
@@ -212,17 +212,17 @@
 				{liveAnnouncement}
 			</div>
 			<div class="mt-4 grid grid-cols-3 gap-3">
-				{#each SLIDES as slide, i (slide.taglineKey)}
-					<button
-						type="button"
-						onclick={() => goToSlide(i)}
-						onkeydown={(event) => handleIndicatorKey(event, i)}
-						aria-label={formatTemplate($_('hero.slideshow_slide_label'), i + 1, SLIDES.length)}
-						aria-current={i === currentSlide ? 'true' : undefined}
-						class="focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-ink focus-visible:ring-offset-2"
-						class:opacity-100={i === currentSlide}
-						class:opacity-40={i !== currentSlide}
-					>
+			{#each SLIDES as slide, i (slide.taglineKey)}
+				<button
+					type="button"
+					onclick={() => goToSlide(i)}
+					onkeydown={(event) => handleIndicatorKey(event, i)}
+					aria-label={formatSlideLabel($_('hero.slideshow_slide_label'), i + 1, SLIDES.length)}
+					aria-current={i === currentSlide ? 'true' : undefined}
+					class="focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-ink focus-visible:ring-offset-2"
+					class:opacity-100={i === currentSlide}
+					class:opacity-40={i !== currentSlide}
+				>
 						<div
 							class="{slide.swatchClass} flex aspect-square w-full items-center justify-center border-hairline border"
 							aria-hidden="true"
