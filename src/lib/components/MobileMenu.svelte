@@ -21,16 +21,18 @@
 		return (event: MouseEvent) => {
 			event.preventDefault();
 			open = false;
-			const target = document.querySelector(href);
-			if (target instanceof HTMLElement) {
-				target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-			}
+			window.setTimeout(() => {
+				const target = document.querySelector(href);
+				if (target instanceof HTMLElement) {
+					target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+				}
+			}, 320);
 		};
 	}
 
 	function handleBookClick(event: MouseEvent) {
 		open = false;
-		onBookClick(event);
+		window.setTimeout(() => onBookClick(event), 320);
 	}
 </script>
 

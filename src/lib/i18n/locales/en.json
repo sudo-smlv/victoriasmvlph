@@ -27,21 +27,7 @@
 	"hero": {
 		"headline": "Stories that stay with you",
 		"subheadline": "Lifestyle photography, atmospheric Reels, and premium photo albums in Freiburg, Basel, Baden-Baden, and across Europe.",
-		"cta_primary": "Book a session",
-		"slides": [
-			{ "alt": "Lifestyle portrait in golden hour light", "caption": "Golden hour, Freiburg" },
-			{ "alt": "Couple walking through Black Forest pines", "caption": "Black Forest" },
-			{ "alt": "Editorial Reels frame on a Basel terrace", "caption": "Basel terrace" },
-			{ "alt": "Premium photo album spread", "caption": "Photo album №01" }
-		],
-		"controls": {
-			"prev": "Previous slide",
-			"next": "Next slide",
-			"play": "Play slideshow",
-			"pause": "Pause slideshow",
-			"slide_label": "Go to slide {index} of {total}",
-			"slide_status": "Slide {index} of {total}: {caption}"
-		}
+		"cta_primary": "Book a session"
 	},
 	"about": {
 		"title": "About",
