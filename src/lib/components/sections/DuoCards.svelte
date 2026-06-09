@@ -1,30 +1,32 @@
 <script lang="ts">
-	import { _ } from 'svelte-i18n';
+	import { get } from 'svelte/store';
+	import { _, json, locale } from 'svelte-i18n';
 	import * as Card from '$lib/components/ui/card';
 	import { Camera } from '@lucide/svelte';
 
-	// DuoCards — twin photography-card block from the design spec.
-	// Labels and titles are decorative chrome (numbered cards), not user-facing
-	// copy, and the spec explicitly excluded them from the i18n catalog.
-	const cards: ReadonlyArray<{ number: string; label: string; title: string; tagline: string }> = [
-		{
-			number: '00',
-			label: 'Editorial',
-			title: 'Studio portrait',
-			tagline: 'Controlled light, classic frame.'
-		},
-		{
-			number: '01',
-			label: 'Lifestyle',
-			title: 'Outdoor walk',
-			tagline: 'Cinematic location, soft light.'
-		}
-	];
+	type DuoCard = { number: string; label: string; title: string; tagline: string };
+
+	function duoCard(index: 1 | 2, number: string): DuoCard {
+		const prefix = index === 1 ? 'duo.card1' : 'duo.card2';
+		return {
+			number,
+			label: $_(`${prefix}_label`),
+			title: $_(`${prefix}_title`),
+			tagline: $_(`${prefix}_tagline`)
+		};
+	}
+
+	const cards = $derived.by<DuoCard[]>(() => {
+		// Reading $locale explicitly makes the derived re-run on language change.
+		void $locale;
+		void get(json);
+		return [duoCard(1, '00'), duoCard(2, '01')];
+	});
 </script>
 
 <section
 	class="bg-brand-cream border-hairline border-b"
-	aria-label="Photography duo"
+	aria-label={$_('a11y.section_duo')}
 >
 	<div
 		class="mx-auto grid max-w-6xl gap-6 px-4 py-12 sm:px-6 sm:py-16 lg:grid-cols-2 lg:gap-8 lg:py-20"

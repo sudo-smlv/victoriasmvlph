@@ -68,7 +68,7 @@
 <section
 	id="services"
 	class="bg-brand-cream border-hairline border-b"
-	aria-label="Services"
+	aria-label={$_('a11y.section_services')}
 >
 	<div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:py-28">
 		<div class="flex flex-col items-start gap-4 sm:flex-row sm:items-end sm:justify-between">
@@ -90,7 +90,7 @@
 				</p>
 			</div>
 			<span class="text-brand-ink/60 font-mono text-xs tracking-[0.2em] uppercase">
-				03 / Packages
+				{$_('services.section_index')}
 			</span>
 		</div>
 
@@ -140,7 +140,7 @@
 						onclick={scrollToContact}
 						class="text-brand-ink hover:text-brand-orange mt-6 inline-flex items-center gap-1.5 text-xs font-semibold tracking-[0.18em] uppercase transition-colors"
 					>
-						Book this package
+						{$_('services.book_cta')}
 						<ArrowUpRight class="size-3.5" />
 					</button>
 				</article>

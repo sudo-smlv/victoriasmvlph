@@ -27,7 +27,7 @@
 		<span class="font-display text-lg uppercase">{$_('common.appName')}</span>
 	</a>
 
-	<nav aria-label="Primary" class="hidden items-center gap-6 lg:flex">
+	<nav aria-label={$_('a11y.site_header_nav')} class="hidden items-center gap-6 lg:flex">
 		{#each navLinks as link (link.href)}
 			<a
 				href={link.href}

@@ -27,7 +27,7 @@
 	];
 </script>
 
-<section id="about" class="bg-brand-cream border-hairline border-b" aria-label="About">
+<section id="about" class="bg-brand-cream border-hairline border-b" 	aria-label={$_('a11y.section_about')}>
 	<div class="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16 lg:py-24">
 		<div class="grid gap-10 md:grid-cols-12 md:gap-12">
 			<div class="flex flex-col gap-4 md:col-span-5">

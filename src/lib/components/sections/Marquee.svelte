@@ -1,18 +1,14 @@
 <script lang="ts">
-	// Decorative marquee strip — visual chrome only, no user-facing text.
-	// Per the design spec: marquee contents are intentionally hardcoded
-	// because they are repeating accent labels, not translatable copy.
-	const items: ReadonlyArray<string> = [
-		'Flash',
-		'Reflectors',
-		'Tripod',
-		'Light kit',
-		'Backdrop',
-		'Camera',
-		'Straps',
-		'Editing',
-		'Albums'
-	];
+	import { get } from 'svelte/store';
+	import { json, locale } from 'svelte-i18n';
+
+	const items = $derived.by<string[]>(() => {
+		// Reading $locale explicitly makes the derived re-run on language change.
+		void $locale;
+		const lookup = get(json);
+		const raw = lookup('marquee.items');
+		return Array.isArray(raw) ? (raw as string[]) : [];
+	});
 </script>
 
 <div

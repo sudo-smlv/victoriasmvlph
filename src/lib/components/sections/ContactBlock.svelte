@@ -12,7 +12,7 @@
 <section
 	id="contact"
 	class="bg-brand-ink text-brand-cream border-hairline border-b scroll-mt-20"
-	aria-label="Contact"
+	aria-label={$_('a11y.section_contact')}
 >
 	<div class="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16 lg:py-24">
 		<Card.Root

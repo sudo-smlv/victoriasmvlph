@@ -13,7 +13,7 @@
 <section
 	id="hero"
 	class="bg-brand-cream border-hairline border-b"
-	aria-label="Hero"
+	aria-label={$_('a11y.section_hero')}
 >
 	<div
 		class="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:px-6 sm:py-16 lg:grid-cols-12 lg:gap-12 lg:py-24"

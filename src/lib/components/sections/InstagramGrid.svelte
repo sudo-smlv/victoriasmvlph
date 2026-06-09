@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { _ } from 'svelte-i18n';
 	import { Camera, Plus } from '@lucide/svelte';
 
 	const tiles: ReadonlyArray<{ num: string; tone: 'cream' | 'ink' | 'orange' | 'yellow' }> = [
@@ -12,18 +13,18 @@
 
 <section
 	class="bg-brand-cream border-hairline border-b"
-	aria-label="Instagram grid"
+	aria-label={$_('instagram.grid_label')}
 >
 	<div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:py-24">
 		<div class="flex flex-col items-start gap-3 sm:flex-row sm:items-end sm:justify-between">
 			<div class="flex flex-col gap-2">
 				<span class="text-brand-ink/60 font-mono text-[10px] tracking-[0.2em] uppercase">
-					— Instagram · @victoriasmvlph
+					{$_('instagram.handle')}
 				</span>
 				<h3
 					class="text-brand-ink font-display text-2xl font-semibold tracking-tight sm:text-3xl"
 				>
-					Follow the studio
+					{$_('instagram.headline')}
 				</h3>
 			</div>
 			<a
@@ -32,7 +33,7 @@
 				rel="noopener noreferrer"
 				class="text-brand-ink hover:text-brand-orange text-xs font-semibold tracking-[0.18em] uppercase"
 			>
-				Open Instagram →
+				{$_('instagram.open_link')}
 			</a>
 		</div>
 

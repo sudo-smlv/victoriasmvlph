@@ -39,7 +39,7 @@
 <Dialog.Root bind:open>
 	<Dialog.Trigger
 		class="text-brand-ink hover:text-brand-orange inline-flex h-9 w-9 items-center justify-center transition-colors duration-300 ease-out focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-hidden lg:hidden"
-		aria-label="Open menu"
+		aria-label={$_('a11y.open_menu')}
 	>
 		<Menu class="size-5" />
 	</Dialog.Trigger>
@@ -59,7 +59,7 @@
 				</Dialog.Description>
 				<Dialog.Close
 					class="text-brand-ink hover:text-brand-orange inline-flex h-9 w-9 items-center justify-center transition-colors duration-300 ease-out focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-hidden"
-					aria-label="Close menu"
+					aria-label={$_('a11y.close_menu')}
 				>
 					<X class="size-5" />
 				</Dialog.Close>
@@ -67,7 +67,7 @@
 
 			<Separator class="bg-hairline" />
 
-			<nav aria-label="Mobile primary" class="flex flex-col gap-1">
+			<nav aria-label={$_('a11y.mobile_nav')} class="flex flex-col gap-1">
 				{#each navLinks as link (link.href)}
 					<a
 						href={link.href}

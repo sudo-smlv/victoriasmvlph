@@ -11,12 +11,12 @@
 	];
 
 	const social = [
-		{ label: 'Instagram', href: 'https://instagram.com/victoriasmvlph' },
-		{ label: 'Telegram', href: 'https://t.me/victoriasmvlph' }
+		{ labelKey: 'footer.instagram', href: 'https://instagram.com/victoriasmvlph' },
+		{ labelKey: 'footer.telegram', href: 'https://t.me/victoriasmvlph' }
 	];
 </script>
 
-<footer class="bg-brand-ink text-brand-cream" aria-label="Site footer">
+<footer class="bg-brand-ink text-brand-cream" 	aria-label={$_('a11y.site_footer')}>
 	<Separator class="bg-brand-cream/15" />
 	<div
 		class="mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-12 lg:gap-12"
@@ -57,7 +57,7 @@
 			</div>
 			<div class="flex flex-col gap-3">
 				<span class="text-brand-cream/50 font-mono text-[10px] tracking-[0.2em] uppercase">
-					— Social
+					{$_('footer.social_heading')}
 				</span>
 				{#each social as link (link.href)}
 					<a
@@ -66,7 +66,7 @@
 						rel="noopener noreferrer"
 						class="text-brand-cream hover:text-brand-orange inline-flex items-center gap-1 text-sm transition-colors"
 					>
-						{link.label}
+						{$_(link.labelKey)}
 						<ArrowUpRight class="size-3.5" />
 					</a>
 				{/each}
