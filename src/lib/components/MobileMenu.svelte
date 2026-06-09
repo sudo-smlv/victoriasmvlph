@@ -44,11 +44,14 @@
 
 	<Dialog.Portal>
 		<Dialog.Overlay
-			class="data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 bg-brand-ink/40 backdrop-blur-sm"
+			class="data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 motion-reduce:animate-none fixed inset-0 z-50 bg-brand-ink/40 backdrop-blur-sm"
 		/>
 		<Dialog.Content
-			class="data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right fixed inset-y-0 right-0 z-50 flex h-full w-full max-w-xs flex-col gap-6 border-l border-hairline bg-brand-cream p-6 shadow-xl duration-300 sm:max-w-sm"
+			class="data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right motion-reduce:animate-none fixed inset-y-0 right-0 z-50 flex h-full w-full max-w-xs flex-col gap-6 border-l border-hairline bg-brand-cream p-6 shadow-xl duration-300 sm:max-w-sm"
 		>
+			<Dialog.Title class="sr-only">{$_('common.nav.menu')}</Dialog.Title>
+			<Dialog.Description class="sr-only">{$_('common.nav.menuDescription')}</Dialog.Description>
+
 			<div class="flex items-center justify-between">
 				<span class="text-brand-orange font-display text-lg leading-none" aria-hidden="true">✺</span>
 				<Dialog.Close

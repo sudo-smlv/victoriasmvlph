@@ -31,7 +31,7 @@
 		{#each navLinks as link (link.href)}
 			<a
 				href={link.href}
-				class="text-brand-ink hover:text-brand-orange text-xs font-semibold tracking-[0.18em] uppercase transition-colors"
+				class="text-brand-ink hover:text-brand-orange text-xs font-semibold tracking-[0.18em] uppercase transition-colors duration-300 ease-out"
 			>
 				{$_(link.key)}
 			</a>

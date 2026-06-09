@@ -10,7 +10,9 @@
 			"about": "Über mich",
 			"services": "Leistungen",
 			"books": "Fotobücher",
-			"contact": "Kontakt"
+			"contact": "Kontakt",
+			"menu": "Seitenmenü",
+			"menuDescription": "Hauptnavigation, Sprachauswahl und Buchung."
 		},
 		"lang": {
 			"ru": "Русский",

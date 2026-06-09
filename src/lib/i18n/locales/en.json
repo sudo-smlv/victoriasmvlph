@@ -10,7 +10,9 @@
 			"about": "About",
 			"services": "Services",
 			"books": "Photo Books",
-			"contact": "Contact"
+			"contact": "Contact",
+			"menu": "Site menu",
+			"menuDescription": "Primary navigation, language switcher, and booking."
 		},
 		"lang": {
 			"ru": "Русский",
