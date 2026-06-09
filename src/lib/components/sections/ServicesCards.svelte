@@ -2,7 +2,7 @@
 	import { get } from 'svelte/store';
 	import { _, json, locale } from 'svelte-i18n';
 	import { Badge } from '$lib/components/ui/badge';
-	import { Camera, Check, Clock, Star, ArrowUpRight } from '@lucide/svelte';
+	import { Camera, Check, Clock, ArrowUpRight } from '@lucide/svelte';
 
 	type Bullet = string;
 
@@ -71,27 +71,20 @@
 	aria-label={$_('a11y.section_services')}
 >
 	<div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:py-28">
-		<div class="flex flex-col items-start gap-4 sm:flex-row sm:items-end sm:justify-between">
-			<div class="flex flex-col gap-3">
-				<Badge
-					variant="outline"
-					class="border-brand-ink text-brand-ink w-fit rounded-none bg-transparent px-3 py-1 text-[10px] font-semibold tracking-[0.18em] uppercase"
-				>
-					<Star class="size-3 fill-current" />
-					{$_('services.title')}
-				</Badge>
-				<h2
-					class="text-brand-ink font-display text-3xl leading-[0.95] font-semibold tracking-tight sm:text-5xl"
-				>
-					{$_('services.title')}
-				</h2>
-				<p class="text-brand-ink/70 max-w-xl text-base">
-					{$_('services.subtitle')}
-				</p>
-			</div>
-			<span class="text-brand-ink/60 font-mono text-xs tracking-[0.2em] uppercase">
-				{$_('services.section_index')}
+		<div class="flex flex-col items-start gap-3">
+			<span
+				class="border-hairline text-brand-ink bg-brand-cream w-fit border px-3 py-1 font-mono text-[10px] tracking-[0.4em] uppercase"
+			>
+				— 03 / {$_('services.title')}
 			</span>
+			<h2
+				class="text-brand-ink font-display text-3xl leading-[0.95] font-semibold tracking-tight sm:text-5xl"
+			>
+				{$_('services.title')}
+			</h2>
+			<p class="text-brand-ink/70 max-w-xl text-base">
+				{$_('services.subtitle')}
+			</p>
 		</div>
 
 		<div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
