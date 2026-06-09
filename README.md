@@ -136,8 +136,8 @@ The workflow (`.github/workflows/build.yml`):
   verification only).
 - Runs `scripts/lint-actions.sh` as the first step — see
   [Action-major lint](#action-major-lint) below.
-- Builds the site with `npm ci` → `npm run build` and emits a static
-  `build/` directory.
+- Builds the site with `npm install --no-audit --no-fund` → `npm run build`
+  and emits a static `build/` directory.
 - On every `push` to `main` or `feat/cla-5-integration`, the final
   step uses `peaceiris/actions-gh-pages@v4` to push `build/` to the
   `gh-pages` branch. PRs build-verify only — the deploy step is
