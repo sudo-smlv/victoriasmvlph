@@ -186,9 +186,9 @@
 					{/each}
 
 					<span
-						class="bg-brand-orange text-brand-ink absolute top-4 right-4 z-10 px-2 py-1 text-[10px] font-semibold tracking-[0.18em] uppercase"
+						class="bg-brand-orange text-brand-ink absolute top-4 right-4 z-10 max-w-[60%] truncate px-2 py-1 text-[10px] font-semibold tracking-[0.18em] uppercase"
 					>
-						{$_('common.tagline')}
+						{slides[activeIndex]?.caption ?? ''}
 					</span>
 					<span
 						class="bg-brand-cream text-brand-ink absolute bottom-4 left-4 z-10 border-hairline border px-2 py-1 font-mono text-[10px] tracking-widest uppercase"
