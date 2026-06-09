@@ -51,6 +51,10 @@
 		>
 			<div class="flex items-center justify-between">
 				<span class="text-brand-orange font-display text-lg leading-none" aria-hidden="true">✺</span>
+				<Dialog.Title class="sr-only">{$_('common.appName')}</Dialog.Title>
+				<Dialog.Description class="sr-only">
+					{$_('common.nav.about')} {$_('common.nav.services')} {$_('common.nav.books')} {$_('common.nav.contact')}
+				</Dialog.Description>
 				<Dialog.Close
 					class="text-brand-ink hover:text-brand-orange inline-flex h-9 w-9 items-center justify-center transition-colors duration-300 ease-out focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-hidden"
 					aria-label="Close menu"
