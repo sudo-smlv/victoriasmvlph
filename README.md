@@ -129,6 +129,35 @@ A minimal GitHub Actions workflow (`.github/workflows/build.yml`) runs
 artifact. Netlify handles its own deploys when linked to the repo, so
 the CI workflow is purely for build verification and artifact storage.
 
+#### Action-major lint
+
+The workflow also runs `scripts/lint-actions.sh` as its first step. The
+script greps `.github/workflows/*.yml` for `actions/<name>@vN` references
+and fails the build if any is pinned below the Node-24-ready major floor.
+This is the regression guard for the [CLAAAAA-63] bump: if a future
+contributor re-pins `actions/checkout@v4` (or any other pre-Node-24
+major), CI fails loudly with a `::error file=...,line=...::` annotation
+that names the offending reference.
+
+Reference minima:
+
+| Action                       | Floor   |
+|------------------------------|---------|
+| `actions/checkout`           | `@v5+`  |
+| `actions/setup-node`         | `@v5+`  |
+| `actions/configure-pages`    | `@v5+`  |
+| `actions/upload-pages-artifact` | `@v4+` |
+| `actions/deploy-pages`       | `@v4+`  |
+
+Run the lint locally with:
+
+```bash
+npm run lint:actions
+```
+
+To intentionally pin a pre-floor reference (for documentation snippets,
+etc.), append the inline marker `node-24-lint: disable` to the same line.
+
 ### Hosting elsewhere
 
 The site is fully static — a single `build/` directory of HTML, JS,
