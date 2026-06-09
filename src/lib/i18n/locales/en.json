@@ -27,7 +27,11 @@
 	"hero": {
 		"headline": "Stories that stay with you",
 		"subheadline": "Lifestyle photography, atmospheric Reels, and premium photo albums in Freiburg, Basel, and Baden-Baden.",
-		"cta_primary": "Book a session"
+		"cta_primary": "Book a session",
+		"slideshow_label": "Hero slideshow",
+		"slideshow_prev": "Previous slide",
+		"slideshow_next": "Next slide",
+		"slideshow_slide_label": "Slide {current} of {total}"
 	},
 	"about": {
 		"title": "About",
@@ -45,7 +49,7 @@
 	"packages": {
 		"mini": {
 			"name": "Mini",
-			"price": "100\u00a0€",
+			"price": "100 €",
 			"bullets": [
 				"Consultation and help with location and outfit",
 				"30-minute session",
@@ -56,7 +60,7 @@
 		},
 		"moment": {
 			"name": "Moment",
-			"price": "200\u00a0€",
+			"price": "200 €",
 			"bullets": [
 				"Consultation",
 				"1-hour session",
@@ -68,7 +72,7 @@
 		},
 		"atmosphere": {
 			"name": "Atmosphere",
-			"price": "250\u00a0€",
+			"price": "250 €",
 			"bullets": [
 				"Help with preparation",
 				"1.5-hour session",

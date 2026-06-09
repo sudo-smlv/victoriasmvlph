@@ -27,7 +27,11 @@
 	"hero": {
 		"headline": "Geschichten, die bleiben",
 		"subheadline": "Lifestyle-Fotografie, atmosphärische Reels und hochwertige Fotobücher in Freiburg, Basel und Baden-Baden.",
-		"cta_primary": "Termin buchen"
+		"cta_primary": "Termin buchen",
+		"slideshow_label": "Hero-Diashow",
+		"slideshow_prev": "Vorherige Folie",
+		"slideshow_next": "Nächste Folie",
+		"slideshow_slide_label": "Folie {current} von {total}"
 	},
 	"about": {
 		"title": "Über mich",

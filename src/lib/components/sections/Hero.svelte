@@ -1,8 +1,101 @@
 <script lang="ts">
+	import { onDestroy, onMount } from 'svelte';
 	import { _ } from 'svelte-i18n';
 	import { Button } from '$lib/components/ui/button';
 	import { Badge } from '$lib/components/ui/badge';
-	import { Camera, Sparkles, ArrowUpRight } from '@lucide/svelte';
+	import { Camera, Sparkles, ArrowUpRight, ChevronLeft, ChevronRight } from '@lucide/svelte';
+
+	type Slide = {
+		taglineKey: 'intro.tagline_lead' | 'duo.card1_tagline' | 'duo.card2_tagline';
+		swatchClass: string;
+		textClass: string;
+	};
+
+	const SLIDES: Slide[] = [
+		{ taglineKey: 'intro.tagline_lead', swatchClass: 'bg-brand-orange/55', textClass: 'text-brand-ink' },
+		{ taglineKey: 'duo.card1_tagline', swatchClass: 'bg-brand-yellow/70', textClass: 'text-brand-ink' },
+		{ taglineKey: 'duo.card2_tagline', swatchClass: 'bg-brand-ink', textClass: 'text-brand-cream' }
+	];
+
+	const SLIDE_DURATION_MS = 5000;
+
+	let currentSlide = $state(0);
+	let prefersReducedMotion = $state(false);
+	let liveAnnouncement = $state('');
+	let timer: ReturnType<typeof setInterval> | null = null;
+
+	function nextSlide() {
+		currentSlide = (currentSlide + 1) % SLIDES.length;
+	}
+
+	function prevSlide() {
+		currentSlide = (currentSlide - 1 + SLIDES.length) % SLIDES.length;
+	}
+
+	function goToSlide(index: number) {
+		if (index < 0 || index >= SLIDES.length) return;
+		currentSlide = index;
+	}
+
+	function handleIndicatorKey(event: KeyboardEvent, index: number) {
+		if (event.key === 'ArrowRight') {
+			event.preventDefault();
+			goToSlide((index + 1) % SLIDES.length);
+		} else if (event.key === 'ArrowLeft') {
+			event.preventDefault();
+			goToSlide((index - 1 + SLIDES.length) % SLIDES.length);
+		} else if (event.key === 'Home') {
+			event.preventDefault();
+			goToSlide(0);
+		} else if (event.key === 'End') {
+			event.preventDefault();
+			goToSlide(SLIDES.length - 1);
+		}
+	}
+
+	function clearTimer() {
+		if (timer !== null) {
+			clearInterval(timer);
+			timer = null;
+		}
+	}
+
+	function startTimer() {
+		clearTimer();
+		if (prefersReducedMotion) return;
+		timer = setInterval(nextSlide, SLIDE_DURATION_MS);
+	}
+
+	function formatTemplate(template: string, current: number, total: number): string {
+		return template.replace('{current}', String(current)).replace('{total}', String(total));
+	}
+
+	$effect(() => {
+		const template = $_(`hero.slideshow_slide_label`) as string;
+		liveAnnouncement = formatTemplate(template, currentSlide + 1, SLIDES.length);
+	});
+
+	$effect(() => {
+		if (prefersReducedMotion) {
+			clearTimer();
+		} else {
+			startTimer();
+		}
+	});
+
+	onMount(() => {
+		const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+		prefersReducedMotion = mq.matches;
+		const onChange = (event: MediaQueryListEvent) => {
+			prefersReducedMotion = event.matches;
+		};
+		mq.addEventListener('change', onChange);
+		return () => mq.removeEventListener('change', onChange);
+	});
+
+	onDestroy(() => {
+		clearTimer();
+	});
 
 	function scrollToContact(event: MouseEvent) {
 		event.preventDefault();
@@ -56,13 +149,35 @@
 		</div>
 
 		<div class="lg:col-span-5">
-			<div class="border-hairline bg-brand-cream relative aspect-[4/5] w-full overflow-hidden border">
-				<div
-					class="bg-brand-ink/[0.04] text-brand-ink/60 flex h-full w-full items-center justify-center"
-					aria-hidden="true"
-				>
-					<Camera class="size-12 sm:size-16" />
-				</div>
+			<div
+				role="region"
+				aria-roledescription="carousel"
+				aria-label={$_('hero.slideshow_label')}
+				class="border-hairline bg-brand-cream relative aspect-[4/5] w-full overflow-hidden border"
+			>
+				{#each SLIDES as slide, i (slide.taglineKey)}
+					<div
+						class="absolute inset-0 flex items-center justify-center p-6 transition-opacity duration-700 ease-in-out sm:p-10"
+						class:opacity-100={i === currentSlide}
+						class:opacity-0={i !== currentSlide}
+						class:pointer-events-none={i !== currentSlide}
+						aria-hidden={i !== currentSlide}
+						role="group"
+						aria-roledescription="slide"
+						aria-label={formatTemplate($_('hero.slideshow_slide_label'), i + 1, SLIDES.length)}
+					>
+						<div
+							class="absolute inset-0 {slide.swatchClass}"
+							aria-hidden="true"
+						></div>
+						<div class="relative flex flex-col items-center gap-3 text-center">
+							<Camera class="size-10 sm:size-12" aria-hidden="true" />
+							<p class="max-w-xs text-sm font-medium sm:text-base md:text-lg {slide.textClass}">
+								{$_(slide.taglineKey)}
+							</p>
+						</div>
+					</div>
+				{/each}
 				<span
 					class="bg-brand-orange text-brand-ink absolute top-4 right-4 px-2 py-1 text-[10px] font-semibold tracking-[0.18em] uppercase"
 				>
@@ -70,29 +185,52 @@
 				</span>
 				<span
 					class="bg-brand-cream text-brand-ink absolute bottom-4 left-4 border-hairline border px-2 py-1 font-mono text-[10px] tracking-widest uppercase"
+					aria-hidden="true"
 				>
-					№ 01 / 24
+					{String(currentSlide + 1).padStart(2, '0')} / {String(SLIDES.length).padStart(2, '0')}
 				</span>
+				<Button
+					variant="ghost"
+					size="icon"
+					onclick={prevSlide}
+					aria-label={$_('hero.slideshow_prev')}
+					class="bg-brand-cream/80 text-brand-ink hover:bg-brand-cream absolute top-1/2 left-2 -translate-y-1/2 rounded-none p-2 backdrop-blur-sm"
+				>
+					<ChevronLeft class="size-5" aria-hidden="true" />
+				</Button>
+				<Button
+					variant="ghost"
+					size="icon"
+					onclick={nextSlide}
+					aria-label={$_('hero.slideshow_next')}
+					class="bg-brand-cream/80 text-brand-ink hover:bg-brand-cream absolute top-1/2 right-2 -translate-y-1/2 rounded-none p-2 backdrop-blur-sm"
+				>
+					<ChevronRight class="size-5" aria-hidden="true" />
+				</Button>
+			</div>
+			<div class="sr-only" aria-live="polite" aria-atomic="true">
+				{liveAnnouncement}
 			</div>
 			<div class="mt-4 grid grid-cols-3 gap-3">
-				<div
-					class="bg-brand-yellow text-brand-ink flex aspect-square items-center justify-center"
-					aria-hidden="true"
-				>
-					<span class="font-display text-2xl">✺</span>
-				</div>
-				<div
-					class="border-hairline text-brand-ink/50 flex aspect-square items-center justify-center border border-dashed"
-					aria-hidden="true"
-				>
-					<Camera class="size-6" />
-				</div>
-				<div
-					class="border-hairline text-brand-ink/50 flex aspect-square items-center justify-center border border-dashed"
-					aria-hidden="true"
-				>
-					<Camera class="size-6" />
-				</div>
+				{#each SLIDES as slide, i (slide.taglineKey)}
+					<button
+						type="button"
+						onclick={() => goToSlide(i)}
+						onkeydown={(event) => handleIndicatorKey(event, i)}
+						aria-label={formatTemplate($_('hero.slideshow_slide_label'), i + 1, SLIDES.length)}
+						aria-current={i === currentSlide ? 'true' : undefined}
+						class="focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-ink focus-visible:ring-offset-2"
+						class:opacity-100={i === currentSlide}
+						class:opacity-40={i !== currentSlide}
+					>
+						<div
+							class="{slide.swatchClass} flex aspect-square w-full items-center justify-center border-hairline border"
+							aria-hidden="true"
+						>
+							<Camera class="text-brand-ink/70 size-6" />
+						</div>
+					</button>
+				{/each}
 			</div>
 		</div>
 	</div>
