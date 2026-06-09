@@ -4,6 +4,7 @@
 	import { Button } from '$lib/components/ui/button';
 	import { Separator } from '$lib/components/ui/separator';
 	import LanguageSwitcher from '$lib/components/LanguageSwitcher.svelte';
+	import MobileMenu from '$lib/components/MobileMenu.svelte';
 
 	function scrollToContact(event: MouseEvent) {
 		event.preventDefault();
@@ -37,7 +38,7 @@
 		{/each}
 	</nav>
 
-	<div class="flex items-center gap-3">
+	<div class="hidden items-center gap-3 lg:flex">
 		<LanguageSwitcher />
 		<Button
 			size="sm"
@@ -48,6 +49,8 @@
 			<ArrowUpRight class="size-3.5" />
 		</Button>
 	</div>
+
+	<MobileMenu {navLinks} onBookClick={scrollToContact} />
 </header>
 
 <Separator class="bg-hairline" />
