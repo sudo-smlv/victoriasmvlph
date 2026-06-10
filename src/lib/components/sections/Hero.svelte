@@ -12,15 +12,13 @@
 	} from '$lib/heroSlideshow';
 
 	type Slide = {
-		taglineKey: 'intro.tagline_lead' | 'duo.card1_tagline' | 'duo.card2_tagline';
+		taglineKey: 'intro.tagline_lead';
 		swatchClass: string;
 		textClass: string;
 	};
 
 	const SLIDES: Slide[] = [
-		{ taglineKey: 'intro.tagline_lead', swatchClass: 'bg-brand-orange/55', textClass: 'text-brand-ink' },
-		{ taglineKey: 'duo.card1_tagline', swatchClass: 'bg-brand-yellow/70', textClass: 'text-brand-ink' },
-		{ taglineKey: 'duo.card2_tagline', swatchClass: 'bg-brand-ink', textClass: 'text-brand-cream' }
+		{ taglineKey: 'intro.tagline_lead', swatchClass: 'bg-brand-orange/55', textClass: 'text-brand-ink' }
 	];
 
 	let currentSlide = $state(0);
