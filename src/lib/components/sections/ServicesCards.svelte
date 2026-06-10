@@ -83,9 +83,6 @@
 			>
 				{$_('services.title')}
 			</h2>
-			<p class="text-brand-ink/70 max-w-xl text-base">
-				{$_('services.subtitle')}
-			</p>
 		</div>
 
 		<div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
@@ -132,7 +129,7 @@
 					<button
 						type="button"
 						onclick={scrollToContact}
-						class="text-brand-ink hover:text-brand-orange mt-6 inline-flex items-center gap-1.5 text-xs font-semibold tracking-[0.18em] uppercase transition-colors"
+						class="text-brand-ink hover:text-brand-orange mt-6 inline-flex min-h-6 items-center gap-1.5 px-2 text-xs font-semibold tracking-[0.18em] uppercase transition-colors"
 					>
 						{$_('services.book_cta')}
 						<ArrowUpRight class="size-3.5" />

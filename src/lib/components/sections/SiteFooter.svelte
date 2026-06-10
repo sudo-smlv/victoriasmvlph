@@ -82,7 +82,7 @@
 			</p>
 			<a
 				href="#contact"
-				class="text-brand-orange inline-flex items-center gap-1.5 text-xs font-semibold tracking-[0.18em] uppercase"
+				class="text-brand-orange inline-flex min-h-6 items-center gap-1.5 px-2 text-xs font-semibold tracking-[0.18em] uppercase"
 			>
 				{$_('hero.cta_primary')}
 				<ArrowUpRight class="size-3.5" />
