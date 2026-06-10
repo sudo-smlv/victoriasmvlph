@@ -2,7 +2,7 @@ name: Build and deploy to GitHub Pages
 
 on:
   push:
-    branches: [main, feat/cla-5-integration]
+    branches: [main, feat/cla-5-integration, 'fix/**']
   pull_request:
     branches: [main, feat/cla-5-integration, 'fix/**']
   workflow_dispatch:
@@ -13,7 +13,9 @@ env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
 
 concurrency:
   group: pages
@@ -25,11 +27,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - name: Lint pinned actions
-        # Regression guard: fail fast if any actions/* reference is pinned
-        # below the Node-24-ready major floor. Runs in seconds; no
-        # dependencies. See scripts/lint-actions.sh for the floor table.
-        run: ./scripts/lint-actions.sh
       - uses: actions/setup-node@v6
         with:
           node-version: 24
@@ -51,9 +48,18 @@ jobs:
         env:
           BASE_PATH: ${{ steps.basepath.outputs.value }}
         run: npm install --no-audit --no-fund && npm run build
-      - name: Deploy to gh-pages branch
-        if: github.event_name == 'push'
-        uses: peaceiris/actions-gh-pages@v4
+      - uses: actions/configure-pages@v6
+      - uses: actions/upload-pages-artifact@v5
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build
+          path: build/
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5

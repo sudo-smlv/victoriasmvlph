@@ -26,47 +26,52 @@
 	},
 	"hero": {
 		"headline": "Geschichten, die bleiben",
-		"subheadline": "Lifestyle-Fotografie, atmosphärische Reels und hochwertige Fotobücher in Freiburg, Basel, Baden-Baden und überall in Europa.",
-		"cta_primary": "Termin buchen"
+		"subheadline": "Lifestyle-Fotografie, atmosphärische Reels und hochwertige Fotobücher in Freiburg, Basel und Baden-Baden.",
+		"cta_primary": "Termin buchen",
+		"slideshow_label": "Hero-Diashow",
+		"slideshow_prev": "Vorherige Folie",
+		"slideshow_next": "Nächste Folie",
+		"slideshow_slide_label": "Folie {current} von {total}"
 	},
 	"about": {
 		"title": "Über mich",
-		"body": "Ich bewahre Ihre Gefühle sorgsam in Bildern und Büchern. Mein Name ist Viktoria, und ich erzähle visuelle Geschichten: lebendige Fotografie, atmosphärische Reels und hochwertige Fotobücher. Ich fotografiere in Freiburg, Basel, Baden-Baden und in ganz Europa.\n\nFür mich ist Fotografie mehr als ein hübsches Bild — sie ist die Möglichkeit, die Zeit anzuhalten und Ihre ehrlichsten Emotionen festzuhalten. Ich glaube, jede Geschichte ist einzigartig, deshalb biete ich ein Komplettpaket an: Ich helfe Ihnen, die perfekte Location zu finden, schaffe eine entspannte Atmosphäre beim Shooting, drehe ästhetische Kurzvideos für Ihren Instagram-Auftritt und gestalte die stärksten Aufnahmen in einem gedruckten Album, das man immer wieder gern in die Hand nimmt.\n\nWir wählen gemeinsam eine Location, die zu Ihrer Stimmung passt. Das kann die städtische Ästhetik und Architektur von Freiburg, Basel oder Baden-Baden sein — ideal für stilvolle Spaziergänge, Kaffee auf Terrassen und elegante Aufnahmen. Oder die cineastische Natur des Schwarzwalds: der Titisee und der Schluchsee mit ihrem stillen Wasser, den Nadelwäldern und dem weichen Licht für die romantischsten Geschichten.",
+		"body": "Ich bewahre Ihre Gefühle sorgsam in Bildern und Büchern. Mein Name ist Viktoria, und ich erzähle visuelle Geschichten: lebendige Fotografie, atmosphärische Reels und hochwertige Fotobücher. Meine Shooting-Geografie umfasst Freiburg, Basel und Baden-Baden.\n\nFür mich ist Fotografie mehr als ein hübsches Bild — sie ist die Möglichkeit, die Zeit anzuhalten und Ihre ehrlichsten Emotionen festzuhalten. Ich glaube, jede Geschichte ist einzigartig, deshalb biete ich ein Komplettpaket an: Ich helfe Ihnen, den perfekten Ort zu finden, schaffe eine entspannte Atmosphäre beim Shooting, drehe ästhetische Kurzvideos für Ihren Instagram-Auftritt und gestalte die stärksten Aufnahmen in einem gedruckten Album, das man immer wieder gern in die Hand nimmt.\n\nWir wählen gemeinsam einen Ort, der zu Ihrer Stimmung passt. Das kann die städtische Ästhetik und Architektur von Freiburg, Basel oder Baden-Baden sein — ideal für stilvolle Spaziergänge, Kaffee auf Terrassen und elegante Aufnahmen. Oder die cineastische Natur des Schwarzwalds: der Titisee und der Schluchsee mit ihrem stillen Wasser, den Nadelwäldern und dem weichen Licht für die romantischsten Geschichten.",
 		"locations": {
 			"title": "Wo ich fotografiere"
 		}
 	},
 	"services": {
 		"title": "Leistungen",
-		"subtitle": "Für Ihre Bequemlichkeit gibt es mehrere Shooting-Formate."
+		"subtitle": "Für Ihre Bequemlichkeit gibt es mehrere Fotoformate.",
+		"book_cta": "Paket buchen"
 	},
 	"packages": {
 		"mini": {
 			"name": "Mini",
-			"price": "100\u00a0€",
+			"price": "100 €",
 			"bullets": [
-				"Beratung und Hilfe bei Location und Outfit",
+				"Beratung und Hilfe bei Ort und Outfit",
 				"30 Minuten Shooting",
 				"30 Fotos in eigener Farbkorrektur und leichter Retusche",
-				"Fertige Online-Galerie in 7 Tagen"
+				"Fertige Galerie in 7 Tagen"
 			],
 			"delivery": "Fertig in 7 Tagen"
 		},
 		"moment": {
 			"name": "Moment",
-			"price": "200\u00a0€",
+			"price": "200 €",
 			"bullets": [
 				"Beratung",
 				"1 Stunde Shooting",
 				"60+ Fotos in eigener Bearbeitung",
-				"Online-Galerie in 10—14 Tagen"
+				"Galerie in 10—14 Tagen"
 			],
 			"delivery": "Fertig in 10—14 Tagen",
 			"featured": "Am beliebtesten"
 		},
 		"atmosphere": {
 			"name": "Atmosphäre",
-			"price": "250\u00a0€",
+			"price": "250 €",
 			"bullets": [
 				"Hilfe bei der Vorbereitung",
 				"1,5 Stunden Shooting",
@@ -79,12 +84,65 @@
 	},
 	"books": {
 		"title": "Fotobücher",
-		"body": "Ich bin fest davon überzeugt, dass Fotos nicht nur auf dem Telefon existieren sollten — deshalb gestalte ich hochwertige Fotobücher, die zu echten Familienerbstücken werden. Sie können ein Buch zu jedem unserer Shootings bestellen oder darin Ihre eigenen Archivaufnahmen verewigen. Ich übernehme vollständig das Design und den Satz, und wir besprechen jedes Detail, um das Album bis zur Perfektion zu bringen.\n\nDiese Bücher zeichnen sich durch besondere Qualität aus: Der Lay-Flat-Einband lässt sich flach auf 180° öffnen, es wird seidenmattes oder glänzendes Papier verwendet, und die Cover werden aus Premium-Stoff, Eco-Leder oder Soft-Touch-Beschichtung mit optionaler persönlicher Prägung gefertigt. Gestaltung und Druck werden individuell für Ihre Anfrage kalkuliert, und das fertige Produkt wird in ganz Europa ausgeliefert."
+		"body": "Ich bin fest davon überzeugt, dass Fotos nicht nur auf dem Telefon existieren sollten — deshalb gestalte ich hochwertige Fotobücher, die zu echten Familienerbstücken werden. Sie können ein Buch zu jedem unserer Shootings bestellen oder darin Ihre eigenen Archivaufnahmen verewigen. Ich übernehme vollständig das Design und den Satz, und wir besprechen jedes Detail, um das Album bis zur Perfektion zu bringen.\n\nDiese Bücher zeichnen sich durch besondere Qualität aus: Der Lay-Flat-Einband lässt sich flach auf 180° öffnen, es wird seidenmattes oder glänzendes Papier verwendet, und die Cover werden aus Premium-Stoff, Eco-Leder oder Soft-Touch-Beschichtung mit optionaler persönlicher Prägung gefertigt. Gestaltung und Druck werden individuell für Ihre Anfrage kalkuliert, und das fertige Produkt wird persönlich an Sie ausgeliefert."
 	},
 	"contact": {
 		"title": "Kontakt aufnehmen",
 		"body": "Lassen Sie uns gemeinsam etwas Schönes schaffen! Um einen Termin zu buchen, erzählen Sie mir kurz von Ihrer Idee: Welche Art von Shooting Sie sich wünschen und in welcher Stadt Sie sind. Sie können mir direkt schreiben, und ich melde mich innerhalb eines Tages bei Ihnen.",
 		"instagram_label": "Nachricht auf Instagram",
 		"telegram_label": "Nachricht auf Telegram"
+	},
+	"intro": {
+		"tagline_lead": "Das ist —",
+		"showreel": "Showreel",
+		"play_showreel_label": "Showreel abspielen"
+	},
+	"duo": {
+		"card1_label": "Editorial",
+		"card1_title": "Studio-Porträt",
+		"card1_tagline": "Kontrolliertes Licht, klassischer Rahmen.",
+		"card2_label": "Lifestyle",
+		"card2_title": "Spaziergang im Freien",
+		"card2_tagline": "Cinematischer Ort, weiches Licht."
+	},
+	"instagram": {
+		"handle": "— Instagram · @victoriasmvlph",
+		"headline": "Dem Studio folgen",
+		"open_link": "Instagram öffnen →",
+		"grid_label": "Instagram-Galerie"
+	},
+	"footer": {
+		"social_heading": "— Social Media",
+		"instagram": "Instagram",
+		"telegram": "Telegram"
+	},
+	"marquee": {
+		"items": [
+			"Blitz",
+			"Reflektoren",
+			"Stativ",
+			"Licht-Set",
+			"Hintergrund",
+			"Kamera",
+			"Gurte",
+			"Bearbeitung",
+			"Alben"
+		]
+	},
+	"a11y": {
+		"select_language": "Sprache auswählen",
+		"open_menu": "Menü öffnen",
+		"close_menu": "Menü schließen",
+		"section_hero": "Hero-Bereich",
+		"section_about": "Über mich",
+		"section_services": "Leistungen",
+		"section_books": "Fotobücher",
+		"section_contact": "Kontakt",
+		"section_instagram": "Instagram-Galerie",
+		"section_intro": "Markenvorstellung",
+		"section_duo": "Fotografie-Duo",
+		"site_footer": "Fußbereich der Seite",
+		"site_header_nav": "Hauptnavigation",
+		"mobile_nav": "Mobile Navigation"
 	}
 }

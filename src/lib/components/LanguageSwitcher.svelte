@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { locale } from 'svelte-i18n';
+	import { _, locale } from 'svelte-i18n';
 	import { ChevronsUpDown, Check } from '@lucide/svelte';
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
 	import { Button } from '$lib/components/ui/button';
@@ -33,7 +33,7 @@
 <DropdownMenu.Root>
 	<DropdownMenu.Trigger>
 		{#snippet child({ props })}
-			<Button {...props} variant="outline" size="sm" class="gap-2" aria-label="Select language">
+			<Button {...props} variant="outline" size="sm" class="gap-2" aria-label={$_('a11y.select_language')}>
 				<span class="font-semibold">{localeLabel[current]}</span>
 				<ChevronsUpDown class="text-muted-foreground size-4" />
 			</Button>
