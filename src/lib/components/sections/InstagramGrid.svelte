@@ -1,14 +1,8 @@
 <script lang="ts">
 	import { _ } from 'svelte-i18n';
-	import { Camera, Plus } from '@lucide/svelte';
+	import { INSTAGRAM_PROFILE_URL, INSTAGRAM_TILES, type InstagramTile } from '$lib/data/instagram';
 
-	const tiles: ReadonlyArray<{ num: string; tone: 'cream' | 'ink' | 'orange' | 'yellow' }> = [
-		{ num: '01', tone: 'cream' },
-		{ num: '02', tone: 'ink' },
-		{ num: '03', tone: 'orange' },
-		{ num: '04', tone: 'yellow' },
-		{ num: '05', tone: 'cream' }
-	];
+	const tiles: ReadonlyArray<InstagramTile> = INSTAGRAM_TILES;
 </script>
 
 <section
@@ -28,7 +22,7 @@
 				</h3>
 			</div>
 			<a
-				href="https://instagram.com/victoriasmvlph"
+				href={INSTAGRAM_PROFILE_URL}
 				target="_blank"
 				rel="noopener noreferrer"
 				class="text-brand-ink hover:text-brand-orange text-xs font-semibold tracking-[0.18em] uppercase"
@@ -38,37 +32,26 @@
 		</div>
 
 		<div class="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5 lg:gap-4">
-			{#each tiles as tile (tile.num)}
-				<figure
-					class="border-hairline relative flex aspect-square items-center justify-center overflow-hidden border"
-					class:bg-brand-cream={tile.tone === 'cream'}
-					class:bg-brand-ink={tile.tone === 'ink'}
-					class:bg-brand-orange={tile.tone === 'orange'}
-					class:bg-brand-yellow={tile.tone === 'yellow'}
+			{#each tiles as tile (tile.src)}
+				<a
+					href={tile.postUrl}
+					target="_blank"
+					rel="noopener noreferrer"
+					class="border-hairline focus-visible:ring-brand-orange block overflow-hidden border focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-cream"
+					aria-label={tile.caption}
 				>
-					<span
-						class="flex items-center justify-center"
-						class:text-brand-ink={tile.tone !== 'ink'}
-						class:text-brand-cream={tile.tone === 'ink'}
-					>
-						<Camera class="size-8" />
-					</span>
-					<span
-						class="absolute top-2 left-2 px-1.5 py-0.5 font-mono text-[10px] tracking-[0.2em] uppercase"
-						class:text-brand-ink={tile.tone !== 'ink'}
-						class:text-brand-cream={tile.tone === 'ink'}
-					>
-						№ {tile.num}
-					</span>
-					<span
-						class="absolute right-2 bottom-2"
-						class:text-brand-ink={tile.tone !== 'ink'}
-						class:text-brand-cream={tile.tone === 'ink'}
-						aria-hidden="true"
-					>
-						<Plus class="size-4" />
-					</span>
-				</figure>
+					<figure class="bg-brand-cream aspect-square">
+						<img
+							src={tile.src}
+							alt={tile.caption}
+							loading="lazy"
+							decoding="async"
+							class="h-full w-full object-cover"
+							width="1080"
+							height="1080"
+						/>
+					</figure>
+				</a>
 			{/each}
 		</div>
 	</div>
