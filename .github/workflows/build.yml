@@ -13,7 +13,7 @@ env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
   group: pages
@@ -23,6 +23,8 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v6
       - name: Lint pinned actions
@@ -57,3 +59,26 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build
+
+  lint-pr-author:
+    name: Lint PR head commit author
+    # Network-side guard for the per-agent git identity policy (see
+    # CLAAAAA-168). Only runs on pull_request to main, so feature branches
+    # and direct pushes are not affected. The lint is non-authoritative on
+    # the first run after a rebase that drops the policy file, because
+    # the script degrades gracefully when .paperclip/git-identity.json
+    # is missing (with a warning, exit 0).
+    if: github.event_name == 'pull_request' && github.base_ref == 'main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          # Full history so the head commit author is resolvable on the
+          # merge ref.
+          fetch-depth: 0
+      - name: Lint PR head commit author
+        # Reads .paperclip/git-identity.json, compares the head commit
+        # author against the allow-list, and fails with an actionable
+        # error if the identity is not in the policy. Historic rebase
+        # opt-out: PAPERCLIP_SKIP_IDENTITY_CHECK=1.
+        run: ./scripts/check-pr-author.sh
