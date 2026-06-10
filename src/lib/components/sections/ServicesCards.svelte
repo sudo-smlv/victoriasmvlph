@@ -2,7 +2,7 @@
 	import { get } from 'svelte/store';
 	import { _, json, locale } from 'svelte-i18n';
 	import { Badge } from '$lib/components/ui/badge';
-	import { Camera, Check, Clock, ArrowUpRight } from '@lucide/svelte';
+	import { Check, Clock, ArrowUpRight } from '@lucide/svelte';
 
 	type Bullet = string;
 
@@ -72,19 +72,12 @@
 >
 	<div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:py-28">
 		<div class="flex flex-col items-start gap-3">
-			<span
-				class="border-hairline text-brand-ink bg-brand-cream w-fit border px-3 py-1 font-mono text-[10px] tracking-[0.4em] uppercase"
-			>
-				— 03 / {$_('services.title')}
-			</span>
+			<!-- AC1 fix-forward (CLAAAAA-124/178): decorative eyebrow span removed; the <h2> is the only visible section title. -->
 			<h2
 				class="text-brand-ink font-display text-3xl leading-[0.95] font-semibold tracking-tight sm:text-5xl"
 			>
 				{$_('services.title')}
 			</h2>
-			<p class="text-brand-ink/70 max-w-xl text-base">
-				{$_('services.subtitle')}
-			</p>
 		</div>
 
 		<div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
@@ -131,19 +124,13 @@
 					<button
 						type="button"
 						onclick={scrollToContact}
-						class="text-brand-ink hover:text-brand-orange mt-6 inline-flex items-center gap-1.5 text-xs font-semibold tracking-[0.18em] uppercase transition-colors"
+						class="text-brand-ink hover:text-brand-orange mt-6 inline-flex min-h-6 items-center gap-1.5 px-2 text-xs font-semibold tracking-[0.18em] uppercase transition-colors"
 					>
 						{$_('services.book_cta')}
 						<ArrowUpRight class="size-3.5" />
 					</button>
 				</article>
 			{/each}
-		</div>
-
-		<div class="mt-12 flex items-center gap-3 opacity-60" aria-hidden="true">
-			<Camera class="text-brand-ink/50 size-5" />
-			<Camera class="text-brand-ink/50 size-5" />
-			<Camera class="text-brand-ink/50 size-5" />
 		</div>
 	</div>
 </section>

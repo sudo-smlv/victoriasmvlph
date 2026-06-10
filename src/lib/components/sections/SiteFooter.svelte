@@ -49,9 +49,10 @@
 				{#each studio as link (link.href)}
 					<a
 						href={link.href}
-						class="text-brand-cream hover:text-brand-orange text-sm transition-colors"
+						aria-label={$_(link.labelKey)}
+						class="text-brand-orange hover:text-brand-cream inline-flex min-h-6 items-center px-3 text-sm transition-colors"
 					>
-						{$_(link.labelKey)}
+						↑
 					</a>
 				{/each}
 			</div>
@@ -64,7 +65,8 @@
 						href={link.href}
 						target="_blank"
 						rel="noopener noreferrer"
-						class="text-brand-cream hover:text-brand-orange inline-flex items-center gap-1 text-sm transition-colors"
+						aria-label={$_(link.labelKey)}
+						class="text-brand-cream hover:text-brand-orange inline-flex min-h-6 items-center gap-1 px-3 text-sm transition-colors"
 					>
 						{$_(link.labelKey)}
 						<ArrowUpRight class="size-3.5" />
@@ -82,7 +84,7 @@
 			</p>
 			<a
 				href="#contact"
-				class="text-brand-orange inline-flex items-center gap-1.5 text-xs font-semibold tracking-[0.18em] uppercase"
+				class="text-brand-orange inline-flex min-h-6 items-center gap-1.5 px-2 text-xs font-semibold tracking-[0.18em] uppercase"
 			>
 				{$_('hero.cta_primary')}
 				<ArrowUpRight class="size-3.5" />

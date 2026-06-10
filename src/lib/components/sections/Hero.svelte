@@ -12,15 +12,13 @@
 	} from '$lib/heroSlideshow';
 
 	type Slide = {
-		taglineKey: 'intro.tagline_lead' | 'duo.card1_tagline' | 'duo.card2_tagline';
+		taglineKey: 'intro.tagline_lead';
 		swatchClass: string;
 		textClass: string;
 	};
 
 	const SLIDES: Slide[] = [
-		{ taglineKey: 'intro.tagline_lead', swatchClass: 'bg-brand-orange/55', textClass: 'text-brand-ink' },
-		{ taglineKey: 'duo.card1_tagline', swatchClass: 'bg-brand-yellow/70', textClass: 'text-brand-ink' },
-		{ taglineKey: 'duo.card2_tagline', swatchClass: 'bg-brand-ink', textClass: 'text-brand-cream' }
+		{ taglineKey: 'intro.tagline_lead', swatchClass: 'bg-brand-orange/55', textClass: 'text-brand-ink' }
 	];
 
 	let currentSlide = $state(0);
@@ -178,11 +176,6 @@
 						</div>
 					</div>
 				{/each}
-				<span
-					class="bg-brand-orange text-brand-ink absolute top-4 right-4 px-2 py-1 text-[10px] font-semibold tracking-[0.18em] uppercase"
-				>
-					{$_('common.tagline')}
-				</span>
 				<span
 					class="bg-brand-cream text-brand-ink absolute bottom-4 left-4 border-hairline border px-2 py-1 font-mono text-[10px] tracking-widest uppercase"
 					aria-hidden="true"

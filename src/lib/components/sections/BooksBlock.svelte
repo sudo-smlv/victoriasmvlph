@@ -2,7 +2,7 @@
 	import { _ } from 'svelte-i18n';
 	import * as Card from '$lib/components/ui/card';
 	import { Separator } from '$lib/components/ui/separator';
-	import { BookOpen, ArrowUpRight } from '@lucide/svelte';
+	import { BookOpen } from '@lucide/svelte';
 
 	function stringOf(key: string): string {
 		const value = $_(key);
@@ -20,12 +20,8 @@
 <section id="books" class="bg-brand-cream border-hairline border-b" 	aria-label={$_('a11y.section_books')}>
 	<div class="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16 lg:py-24">
 		<div class="grid gap-10 md:grid-cols-12 md:gap-12">
-			<div class="flex flex-col gap-4 md:col-span-5">
-				<span
-					class="border-hairline text-brand-ink bg-brand-cream w-fit border px-3 py-1 font-mono text-[10px] tracking-[0.4em] uppercase"
-				>
-					— 04 / {$_('books.title')}
-				</span>
+			<div class="flex flex-col gap-3 md:col-span-5">
+				<!-- AC1 fix-forward (CLAAAAA-124/178): decorative eyebrow span removed; the <h2> is the only visible section title. -->
 				<h2
 					class="text-brand-ink font-display text-[clamp(2rem,5vw,3.5rem)] leading-[1] font-semibold tracking-tight"
 				>
@@ -48,12 +44,6 @@
 					<p>{paragraph}</p>
 				{/each}
 				<Separator class="bg-hairline mt-2" />
-				<div class="flex items-center gap-2">
-					<ArrowUpRight class="text-brand-orange size-4" />
-					<span class="font-mono text-[10px] tracking-[0.3em] uppercase opacity-70">
-						{$_('common.appName')}
-					</span>
-				</div>
 			</div>
 		</div>
 	</div>

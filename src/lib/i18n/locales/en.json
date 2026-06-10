@@ -1,148 +1,148 @@
 {
-	"common": {
-		"appName": "Viktoria",
-		"brand": "Viktoria",
-		"tagline": "Photographer & visual storyteller",
-		"language": "Language",
-		"selectLanguage": "Select language",
-		"currentLanguage": "English",
-		"nav": {
-			"about": "About",
-			"services": "Services",
-			"books": "Photo Books",
-			"contact": "Contact"
-		},
-		"lang": {
-			"ru": "Русский",
-			"en": "English",
-			"de": "Deutsch"
-		},
-		"footer": {
-			"copyright": "© 2026 Viktoria. All rights reserved."
-		},
-		"placeholderHeading": "Hello, world!",
-		"placeholderBody": "This is a scaffold page. Real content lands in the next issue.",
-		"placeholderCta": "Learn more"
-	},
-	"hero": {
-		"headline": "Stories that stay with you",
-		"subheadline": "Lifestyle photography, atmospheric Reels, and premium photo albums in Freiburg, Basel, and Baden-Baden.",
-		"cta_primary": "Book a session",
-		"slideshow_label": "Hero slideshow",
-		"slideshow_prev": "Previous slide",
-		"slideshow_next": "Next slide",
-		"slideshow_slide_label": "Slide {current} of {total}"
-	},
-	"about": {
-		"title": "About",
-		"body": "I care for your feelings through the lens and the page. My name is Viktoria, and I create visual stories: vibrant photography, atmospheric Reels, and premium photo books. My shooting geography is Freiburg, Basel, and Baden-Baden.\n\nFor me, photography is more than a pretty picture. It is a way to pause time and keep the most genuine emotions. I believe every story is unique, so I offer a full-service approach: I help you find the perfect location, set a relaxed mood on set, film elegant short videos for your Instagram, and design the strongest frames into a printed album you'll want to touch again and again.\n\nWe can pick a location that matches your mood. It can be the urban aesthetic and architecture of Freiburg, Basel, or Baden-Baden, ideal for stylish walks, coffee on terraces, and elegant frames. Or the cinematic nature of the Black Forest — Lake Titisee and Lake Schluchsee, with their still water, evergreen forests, and soft light for the most romantic stories.",
-		"locations": {
-			"title": "Where I shoot"
-		}
-	},
-	"services": {
-		"title": "Services",
-		"subtitle": "A few session formats to make things easy for you.",
-		"book_cta": "Book this package"
-	},
-	"packages": {
-		"mini": {
-			"name": "Mini",
-			"price": "100 €",
-			"bullets": [
-				"Consultation and help with location and outfit",
-				"30-minute session",
-				"30 photos with signature color grading and light retouch",
-				"Online gallery delivery in 7 days"
-			],
-			"delivery": "Ready in 7 days"
-		},
-		"moment": {
-			"name": "Moment",
-			"price": "200 €",
-			"bullets": [
-				"Consultation",
-				"1-hour session",
-				"60+ photos in signature editing",
-				"Online gallery delivery in 10—14 days"
-			],
-			"delivery": "Ready in 10—14 days",
-			"featured": "Most popular"
-		},
-		"atmosphere": {
-			"name": "Atmosphere",
-			"price": "250 €",
-			"bullets": [
-				"Help with preparation",
-				"1.5-hour session",
-				"90+ photos in signature editing",
-				"Edited Reels clip, 15—30 seconds, with music",
-				"Turnaround — 14 days"
-			],
-			"delivery": "Ready in 14 days"
-		}
-	},
-	"books": {
-		"title": "Photo Books",
-		"body": "I am deeply convinced that photographs should not live only on a phone, so I design premium photo books that become true family heirlooms. You can order a book to go with any of our sessions, or fill it with your own archive shots. I take full responsibility for the design and layout, and we discuss every detail to bring the album to perfection.\n\nThese books stand out for their exceptional quality: Lay Flat binding opens flat at 180°, satin or glossy paper is used, and the covers are made of premium fabric, eco-leather, or a Soft Touch finish with optional personal embossing. Design and printing are quoted separately for your request, and the finished piece is delivered in person."
-	},
-	"contact": {
-		"title": "Get in touch",
-		"body": "Let's create something beautiful together! To book a date, tell me a little about your idea: what kind of session you need and which city you are in. You can message me directly, and I will get back to you within a day.",
-		"instagram_label": "Message on Instagram",
-		"telegram_label": "Message on Telegram"
-	},
-	"intro": {
-		"tagline_lead": "This is —",
-		"showreel": "Showreel",
-		"play_showreel_label": "Play showreel"
-	},
-	"duo": {
-		"card1_label": "Editorial",
-		"card1_title": "Studio portrait",
-		"card1_tagline": "Controlled light, classic frame.",
-		"card2_label": "Lifestyle",
-		"card2_title": "Outdoor walk",
-		"card2_tagline": "Cinematic location, soft light."
-	},
-	"instagram": {
-		"handle": "— Instagram · @victoriasmvlph",
-		"headline": "Follow the studio",
-		"open_link": "Open Instagram →",
-		"grid_label": "Instagram grid"
-	},
-	"footer": {
-		"social_heading": "— Social",
-		"instagram": "Instagram",
-		"telegram": "Telegram"
-	},
-	"marquee": {
-		"items": [
-			"Flash",
-			"Reflectors",
-			"Tripod",
-			"Light kit",
-			"Backdrop",
-			"Camera",
-			"Straps",
-			"Editing",
-			"Albums"
-		]
-	},
-	"a11y": {
-		"select_language": "Select language",
-		"open_menu": "Open menu",
-		"close_menu": "Close menu",
-		"section_hero": "Hero",
-		"section_about": "About",
-		"section_services": "Services",
-		"section_books": "Photo books",
-		"section_contact": "Contact",
-		"section_instagram": "Instagram grid",
-		"section_intro": "Brand intro",
-		"section_duo": "Photography duo",
-		"site_footer": "Site footer",
-		"site_header_nav": "Primary",
-		"mobile_nav": "Mobile primary"
-	}
+  "common": {
+    "appName": "Viktoria",
+    "brand": "Viktoria",
+    "tagline": "Photographer & visual storyteller",
+    "language": "Language",
+    "selectLanguage": "Select language",
+    "currentLanguage": "English",
+    "nav": {
+      "about": "About",
+      "services": "Services",
+      "books": "Photo Books",
+      "contact": "Contact"
+    },
+    "lang": {
+      "ru": "Русский",
+      "en": "English",
+      "de": "Deutsch"
+    },
+    "footer": {
+      "copyright": "© 2026 Viktoria. All rights reserved."
+    },
+    "placeholderHeading": "Hello, world!",
+    "placeholderBody": "This is a scaffold page. Real content lands in the next issue.",
+    "placeholderCta": "Learn more"
+  },
+  "hero": {
+    "headline": "Stories that stay with you",
+    "subheadline": "Lifestyle photography, atmospheric Reels, and premium photo albums in Freiburg, Basel, and Baden-Baden.",
+    "cta_primary": "Book a session",
+    "slideshow_label": "Hero slideshow",
+    "slideshow_prev": "Previous slide",
+    "slideshow_next": "Next slide",
+    "slideshow_slide_label": "Slide {current} of {total}"
+  },
+  "about": {
+    "title": "About",
+    "body": "I care for your feelings through the lens and the page. My name is Viktoria, and I create visual stories: vibrant photography, atmospheric Reels, and premium photo books. My shooting geography is Freiburg, Basel, and Baden-Baden.\n\nFor me, photography is more than a pretty picture. It is a way to pause time and keep the most genuine emotions. I believe every story is unique, so I offer a full-service approach: I help you find the perfect location, set a relaxed mood on set, film elegant short videos for your Instagram, and design the strongest frames into a printed album you'll want to touch again and again.\n\nWe can pick a location that matches your mood. It can be the urban aesthetic and architecture of Freiburg, Basel, or Baden-Baden, ideal for stylish walks, coffee on terraces, and elegant frames. Or the cinematic nature of the Black Forest — Lake Titisee and Lake Schluchsee, with their still water, evergreen forests, and soft light for the most romantic stories.",
+    "locations": {
+      "title": "Where I shoot"
+    }
+  },
+  "services": {
+    "title": "Services",
+    "subtitle": "A few session formats to make things easy for you.",
+    "book_cta": "Book this package"
+  },
+  "packages": {
+    "mini": {
+      "name": "Mini",
+      "price": "100 €",
+      "bullets": [
+        "Consultation and help with location and outfit",
+        "30-minute session",
+        "30 photos with signature color grading and light retouch",
+        "Online gallery delivery in 7 days"
+      ],
+      "delivery": "Ready in 7 days"
+    },
+    "moment": {
+      "name": "Moment",
+      "price": "200 €",
+      "bullets": [
+        "Consultation",
+        "1-hour session",
+        "60+ photos in signature editing",
+        "Online gallery delivery in 10—14 days"
+      ],
+      "delivery": "Ready in 10—14 days",
+      "featured": "Most popular"
+    },
+    "atmosphere": {
+      "name": "Atmosphere",
+      "price": "250 €",
+      "bullets": [
+        "Help with preparation",
+        "1.5-hour session",
+        "90+ photos in signature editing",
+        "Edited Reels clip, 15—30 seconds, with music",
+        "Turnaround — 14 days"
+      ],
+      "delivery": "Ready in 14 days"
+    }
+  },
+  "books": {
+    "title": "Photo Books",
+    "body": "I am deeply convinced that photographs should not live only on a phone, so I design premium photo books that become true family heirlooms. You can order a book to go with any of our sessions, or fill it with your own archive shots. I take full responsibility for the design and layout, and we discuss every detail to bring the album to perfection.\n\nThese books stand out for their exceptional quality: Lay Flat binding opens flat at 180°, satin or glossy paper is used, and the covers are made of premium fabric, eco-leather, or a Soft Touch finish with optional personal embossing. Design and printing are quoted separately for your request, and the finished piece is delivered in person."
+  },
+  "contact": {
+    "title": "Get in touch",
+    "body": "Let's create something beautiful together! To book a date, tell me a little about your idea: what kind of session you need and which city you are in. You can message me directly, and I will get back to you within a day.",
+    "instagram_label": "Message on Instagram",
+    "telegram_label": "Message on Telegram"
+  },
+  "intro": {
+    "tagline_lead": "This is —",
+    "showreel": "Showreel",
+    "play_showreel_label": "Play showreel"
+  },
+  "duo": {
+    "card1_label": "Editorial",
+    "card1_title": "Studio portrait",
+    "card1_tagline": "Controlled light, classic frame.",
+    "card2_label": "Lifestyle",
+    "card2_title": "Outdoor walk",
+    "card2_tagline": "Cinematic location, soft light."
+  },
+  "instagram": {
+    "handle": "— Instagram · @victoriasmvlph",
+    "headline": "Behind the scenes",
+    "open_link": "Open Instagram →",
+    "grid_label": "Instagram grid"
+  },
+  "footer": {
+    "social_heading": "— Social",
+    "instagram": "Instagram",
+    "telegram": "Telegram"
+  },
+  "marquee": {
+    "items": [
+      "Flash",
+      "Reflectors",
+      "Tripod",
+      "Light kit",
+      "Backdrop",
+      "Camera",
+      "Straps",
+      "Editing",
+      "Albums"
+    ]
+  },
+  "a11y": {
+    "select_language": "Select language",
+    "open_menu": "Open menu",
+    "close_menu": "Close menu",
+    "section_hero": "Hero",
+    "section_about": "About",
+    "section_services": "Services",
+    "section_books": "Photo books",
+    "section_contact": "Contact",
+    "section_instagram": "Instagram grid",
+    "section_intro": "Brand intro",
+    "section_duo": "Photography duo",
+    "site_footer": "Site footer",
+    "site_header_nav": "Primary",
+    "mobile_nav": "Mobile primary"
+  }
 }
