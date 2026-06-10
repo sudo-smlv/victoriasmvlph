@@ -4,7 +4,6 @@
 	import Marquee from '$lib/components/sections/Marquee.svelte';
 	import IntroBlock from '$lib/components/sections/IntroBlock.svelte';
 	import ServicesCards from '$lib/components/sections/ServicesCards.svelte';
-	import DuoCards from '$lib/components/sections/DuoCards.svelte';
 	import About from '$lib/components/sections/About.svelte';
 	import BooksBlock from '$lib/components/sections/BooksBlock.svelte';
 	import ContactBlock from '$lib/components/sections/ContactBlock.svelte';
@@ -18,7 +17,6 @@
 	<Marquee />
 	<IntroBlock />
 	<ServicesCards />
-	<DuoCards />
 	<About />
 	<BooksBlock />
 	<ContactBlock />
