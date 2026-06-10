@@ -53,9 +53,81 @@ jobs:
         with:
           path: build/
 
+  canary:
+    name: Pre-deploy canary (verify prior deploy is live)
+    # CLAAAAA-185 — architect non-negotiable follow-up. Runs only on
+    # push events: PR runs do not deploy, so the canary is not needed.
+    # The live URL is the most recent successful Pages deploy; a healthy
+    # canary means the prior deploy actually shipped and the CDN is serving
+    # a non-stale, non-empty bundle. If the canary fails, the deploy job is
+    # skipped — fail fast on a known-bad prior deploy rather than compound it
+    # with a new one. Lenses: observability-first, fault tolerance, defense
+    # in depth.
+    if: github.event_name == 'push'
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: HEAD probe of live Pages URL
+        env:
+          PAGES_URL: ${{ vars.PAGES_LIVE_URL || 'https://sudo-smlv.github.io/victoriasmvlph/' }}
+        run: |
+          set -euo pipefail
+          echo "Canary probing: $PAGES_URL"
+          status=$(curl -s -o /dev/null -w '%{http_code}' -I "$PAGES_URL")
+          if [ "$status" != "200" ]; then
+            echo "::error::Canary failed: HTTP $status (expected 200) at $PAGES_URL"
+            exit 1
+          fi
+          echo "Canary OK: HTTP 200"
+
+      - name: Verify last-modified is within 7 days
+        env:
+          PAGES_URL: ${{ vars.PAGES_LIVE_URL || 'https://sudo-smlv.github.io/victoriasmvlph/' }}
+        run: |
+          set -euo pipefail
+          lm=$(curl -s -I "$PAGES_URL" | awk -F': ' 'tolower($1)=="last-modified"{sub(/\r$/,"",$2); print $2; exit}')
+          if [ -z "$lm" ]; then
+            echo "::error::Canary failed: no Last-Modified header at $PAGES_URL"
+            exit 1
+          fi
+          # Parse via python3 for portability and so the same script is
+          # verifiable on macOS dev boxes. RFC 1123 → epoch is unambiguous.
+          read -r age_days lm_iso now_iso < <(python3 -c "
+          from email.utils import parsedate_to_datetime
+          from datetime import datetime, timezone
+          lm = parsedate_to_datetime('$lm')
+          now = datetime.now(timezone.utc)
+          age = (now - lm).total_seconds() / 86400
+          print(f'{age:.4f} {lm.isoformat()} {now.isoformat()}')
+          ")
+          echo "Last-Modified: $lm_iso (age ${age_days} day(s))"
+          python3 -c "
+          import sys
+          age = float('$age_days')
+          if age > 7:
+              print('::error::Canary failed: Last-Modified is ' + str(age) + ' day(s) old (> 7). Stale CDN response.', file=sys.stderr)
+              sys.exit(1)
+          "
+          echo "Canary OK: Last-Modified within 7 days"
+
+      - name: Smoke probe — known-good string in served bundle
+        env:
+          PAGES_URL: ${{ vars.PAGES_LIVE_URL || 'https://sudo-smlv.github.io/victoriasmvlph/' }}
+        run: |
+          set -euo pipefail
+          body=$(curl -sL "$PAGES_URL")
+          # 'Viktoria' is the common.brand value from src/lib/i18n/locales/*.json
+          # and is rendered in the header, hero, and footer. If it is missing
+          # the bundle is empty, broken, or the wrong site is being served.
+          if ! printf '%s' "$body" | grep -qF 'Viktoria'; then
+            echo "::error::Canary failed: served bundle does not contain the known-good string 'Viktoria'. Likely empty or wrong site."
+            exit 1
+          fi
+          echo "Canary OK: known-good string 'Viktoria' present in served bundle"
+
   deploy:
     name: Deploy to GitHub Pages
-    needs: build
+    needs: [build, canary]
     runs-on: ubuntu-latest
     environment:
       name: github-pages
