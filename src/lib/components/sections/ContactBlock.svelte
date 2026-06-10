@@ -42,7 +42,7 @@
 					target="_blank"
 					rel="noopener noreferrer"
 					size="lg"
-					class="bg-brand-cream text-brand-ink hover:bg-brand-yellow flex-1 gap-2 rounded-none px-6 text-xs font-semibold tracking-[0.18em] uppercase"
+					class="bg-brand-cream text-brand-ink hover:bg-brand-yellow w-full gap-2 rounded-none px-6 text-xs font-semibold tracking-[0.18em] uppercase sm:flex-1"
 				>
 					<Camera class="size-4" />
 					{$_('contact.instagram_label')}
@@ -53,8 +53,7 @@
 					target="_blank"
 					rel="noopener noreferrer"
 					size="lg"
-					variant="outline"
-					class="border-brand-cream text-brand-cream hover:bg-brand-cream rounded-none px-6 text-xs font-semibold tracking-[0.18em] uppercase hover:text-brand-ink flex-1 gap-2"
+					class="bg-transparent text-brand-cream border-brand-cream hover:bg-brand-cream w-full gap-2 rounded-none border-2 px-6 text-xs font-semibold tracking-[0.18em] uppercase hover:text-brand-ink sm:flex-1"
 				>
 					<Send class="size-4" />
 					{$_('contact.telegram_label')}
