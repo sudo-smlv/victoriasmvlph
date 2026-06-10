@@ -30,9 +30,10 @@
 <section id="about" class="bg-brand-cream border-hairline border-b" 	aria-label={$_('a11y.section_about')}>
 	<div class="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16 lg:py-24">
 		<div class="grid gap-10 md:grid-cols-12 md:gap-12">
-			<div class="flex flex-col gap-4 md:col-span-5">
+			<div class="flex flex-col gap-3 md:col-span-5">
 				<span
 					class="border-hairline text-brand-ink bg-brand-cream w-fit border px-3 py-1 font-mono text-[10px] tracking-[0.4em] uppercase"
+					aria-hidden="true"
 				>
 					— 03 / {$_('about.title')}
 				</span>

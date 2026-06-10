@@ -179,11 +179,6 @@
 					</div>
 				{/each}
 				<span
-					class="bg-brand-orange text-brand-ink absolute top-4 right-4 px-2 py-1 text-[10px] font-semibold tracking-[0.18em] uppercase"
-				>
-					{$_('common.tagline')}
-				</span>
-				<span
 					class="bg-brand-cream text-brand-ink absolute bottom-4 left-4 border-hairline border px-2 py-1 font-mono text-[10px] tracking-widest uppercase"
 					aria-hidden="true"
 				>

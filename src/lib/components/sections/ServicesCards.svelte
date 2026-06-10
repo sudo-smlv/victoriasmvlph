@@ -2,7 +2,7 @@
 	import { get } from 'svelte/store';
 	import { _, json, locale } from 'svelte-i18n';
 	import { Badge } from '$lib/components/ui/badge';
-	import { Camera, Check, Clock, ArrowUpRight } from '@lucide/svelte';
+	import { Check, Clock, ArrowUpRight } from '@lucide/svelte';
 
 	type Bullet = string;
 
@@ -74,8 +74,9 @@
 		<div class="flex flex-col items-start gap-3">
 			<span
 				class="border-hairline text-brand-ink bg-brand-cream w-fit border px-3 py-1 font-mono text-[10px] tracking-[0.4em] uppercase"
+				aria-hidden="true"
 			>
-				— 03 / {$_('services.title')}
+				— 02 / {$_('services.title')}
 			</span>
 			<h2
 				class="text-brand-ink font-display text-3xl leading-[0.95] font-semibold tracking-tight sm:text-5xl"
@@ -138,12 +139,6 @@
 					</button>
 				</article>
 			{/each}
-		</div>
-
-		<div class="mt-12 flex items-center gap-3 opacity-60" aria-hidden="true">
-			<Camera class="text-brand-ink/50 size-5" />
-			<Camera class="text-brand-ink/50 size-5" />
-			<Camera class="text-brand-ink/50 size-5" />
 		</div>
 	</div>
 </section>

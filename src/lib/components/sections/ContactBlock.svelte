@@ -23,6 +23,7 @@
 					<Badge
 						variant="outline"
 						class="border-brand-cream/30 text-brand-cream rounded-none bg-transparent px-3 py-1 text-[10px] font-semibold tracking-[0.4em] uppercase"
+						aria-hidden="true"
 					>
 						— 05 / {$_('contact.title')}
 					</Badge>

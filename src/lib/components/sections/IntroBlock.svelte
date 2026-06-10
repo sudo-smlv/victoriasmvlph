@@ -10,9 +10,6 @@
 	<div
 		class="mx-auto flex max-w-6xl flex-col items-center gap-10 px-4 text-center sm:px-6"
 	>
-		<span class="font-mono text-[10px] tracking-[0.4em] uppercase opacity-70">
-			— {$_('common.appName')}
-		</span>
 		<h2
 			class="text-brand-cream font-display text-[clamp(3.5rem,12vw,10rem)] leading-[0.9] font-semibold tracking-tight uppercase"
 		>
