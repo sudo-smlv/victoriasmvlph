@@ -72,12 +72,7 @@
 >
 	<div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:py-28">
 		<div class="flex flex-col items-start gap-3">
-			<span
-				class="border-hairline text-brand-ink bg-brand-cream w-fit border px-3 py-1 font-mono text-[10px] tracking-[0.4em] uppercase"
-				aria-hidden="true"
-			>
-				— 02 / {$_('services.title')}
-			</span>
+			<!-- AC1 fix-forward (CLAAAAA-124/178): decorative eyebrow span removed; the <h2> is the only visible section title. -->
 			<h2
 				class="text-brand-ink font-display text-3xl leading-[0.95] font-semibold tracking-tight sm:text-5xl"
 			>

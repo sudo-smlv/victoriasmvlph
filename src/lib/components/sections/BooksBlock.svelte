@@ -21,12 +21,7 @@
 	<div class="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16 lg:py-24">
 		<div class="grid gap-10 md:grid-cols-12 md:gap-12">
 			<div class="flex flex-col gap-3 md:col-span-5">
-				<span
-					class="border-hairline text-brand-ink bg-brand-cream w-fit border px-3 py-1 font-mono text-[10px] tracking-[0.4em] uppercase"
-					aria-hidden="true"
-				>
-					— 04 / {$_('books.title')}
-				</span>
+				<!-- AC1 fix-forward (CLAAAAA-124/178): decorative eyebrow span removed; the <h2> is the only visible section title. -->
 				<h2
 					class="text-brand-ink font-display text-[clamp(2rem,5vw,3.5rem)] leading-[1] font-semibold tracking-tight"
 				>
