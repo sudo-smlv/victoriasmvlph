@@ -44,10 +44,24 @@ jobs:
           else
             echo "value=/${{ github.event.repository.name }}" >> "$GITHUB_OUTPUT"
           fi
+
+      # Data-contract test gate (CLAAAAA-166).
+      #
+      # Runs `npm test` (vitest) BEFORE the build. This is the third layer of
+      # the Instagram data-contract enforcement per ADR-001 (CLAAAAA-143):
+      #   1. `src/lib/data/instagram.ts` runs `assertValidInstagramTiles()` at
+      #      module load (build-time, via the SSG pass).
+      #   2. `src/lib/data/instagram.test.ts` enforces the same constraints.
+      #   3. THIS step — CI fails the deploy if the vitest suite breaks, so a
+      #      PR that drops a caption or changes the tile count cannot ship
+      #      green even though `npm run build` would still succeed.
+      - name: Run data-contract tests
+        run: npm install --no-audit --no-fund && npm test
+
       - name: Build static site
         env:
           BASE_PATH: ${{ steps.basepath.outputs.value }}
-        run: npm install --no-audit --no-fund && npm run build
+        run: npm run build
       - uses: actions/configure-pages@v6
       - uses: actions/upload-pages-artifact@v5
         with:
