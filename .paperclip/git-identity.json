@@ -1,0 +1,47 @@
+{
+  "$schema": "https://paperclip.ai/schemas/git-identity/v1.json",
+  "description": "Canonical git identity for each Paperclip agent in ClawTeam Engineering. Used by scripts/paperclip-set-git-identity.sh (bootstrap) and the pre-push hook to enforce chain-of-custody on commits.",
+  "fallback": {
+    "name": "Paperclip Agent",
+    "email": "agent@clawteam.local",
+    "note": "Used only when the active agent cannot be resolved. Commits with this identity should be re-authored by the actual assignee at PR time."
+  },
+  "agents": {
+    "frontend developer": {
+      "name": "Frontend Developer (ClawTeam)",
+      "email": "frontend@clawteam.local"
+    },
+    "backend developer": {
+      "name": "Backend Developer (ClawTeam)",
+      "email": "backend@clawteam.local"
+    },
+    "devops engineer": {
+      "name": "DevOps Engineer (ClawTeam)",
+      "email": "devops@clawteam.local"
+    },
+    "qa engineer": {
+      "name": "QA Engineer (ClawTeam)",
+      "email": "qa@clawteam.local"
+    },
+    "system architect": {
+      "name": "System Architect (ClawTeam)",
+      "email": "architect@clawteam.local"
+    },
+    "ceo": {
+      "name": "CEO (ClawTeam)",
+      "email": "ceo@clawteam.local"
+    },
+    "ui/ux designer": {
+      "name": "UI/UX Designer (ClawTeam)",
+      "email": "design@clawteam.local"
+    },
+    "system analyst": {
+      "name": "System Analyst (ClawTeam)",
+      "email": "analyst@clawteam.local"
+    },
+    "product manager": {
+      "name": "Product Manager (ClawTeam)",
+      "email": "pm@clawteam.local"
+    }
+  }
+}
